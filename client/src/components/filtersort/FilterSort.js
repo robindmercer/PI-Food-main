@@ -13,7 +13,7 @@ function FilterSort() {
   }, [])
 
   //! Importing tipos and all foods to handle filtering
-  const tipos = useSelector((state) => state.tipos)
+  const tipos = useSelector((state) => state.tipo)
   const foods = useSelector((state) => state.allFoods)
 
   let [selectedTemp, setSelectedTemp] = useState('')
@@ -22,11 +22,20 @@ function FilterSort() {
   //! Setting what to do onClick
   function handleClick() {
     let filtered = []
+    console.log('selectedTemp: ', selectedTemp);
     foods.forEach((b) => {
-      b.tipos.map((t) =>
-        t.name === selectedTemp ? filtered.push(b) : null,
-      )
+      for (var i = 0; i < b.dishTypes.length; i++) {
+        var element = b.dishTypes[i];
+        if (element == selectedTemp ){
+            filtered.push(b) 
+        }
+        console.log('element: ', element);
+      }   
+        // b.dishTypes.map((t) =>
+        //   t.nombre === selectedTemp ? filtered.push(b) : null,
+        //   )
     })
+    console.log('filtered: ', filtered);
     dispatch(filter(filtered))
   }
 
@@ -67,11 +76,11 @@ function FilterSort() {
           className={style.select}
         >
           <option>Filter Tipo</option>
-          {/* {tipos.map((e) => (
+          {tipos.map((e) => (
             <option value={e.nombre} key={e.id}>
               {e.nombre}
             </option>
-          ))} */}
+          ))}
         </select>
         <div className={style.btnContainer}>
           <button onClick={() => handleClick()} className={style.button}>
@@ -93,9 +102,9 @@ function FilterSort() {
       </form> */}
 
       <form className={style.formContainer}>
-        <p className={style.text}>Order By Letter</p>
+        {/* <p className={style.text}>Order By Letter</p> */}
         <select onChange={handleOrder} className={style.select}>
-          <option value="">Filter by Recepi</option>
+          <option value="">Order by Recipe</option>
           <option value="AZ">Ascending</option>
           <option value="ZA">Descending</option>
         </select>

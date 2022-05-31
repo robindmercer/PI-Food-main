@@ -48,7 +48,7 @@ function Home({ input, setInput }) {
       })
     ) : (
       <div className={style.notFoundMsg}>
-        <p className={style.notFoundMsg}>No Dog Found</p>
+        <p className={style.notFoundMsg}>No Recipe Found</p>
         <button
           className={style.button}
           onClick={() => (window.location.href = '/home')}

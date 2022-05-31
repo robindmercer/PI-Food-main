@@ -10,7 +10,7 @@ function SearchBar({ input, setInput }) {
         className={style.formContainer}
       >
         <div className={style.search}>
-          <i class="fas fa-paw"></i>
+          <i className="fas fa-paw"></i>
         </div>
         <div className={style.searchBarContainer}>
           <input

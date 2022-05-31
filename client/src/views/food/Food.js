@@ -19,7 +19,7 @@ export default function Food(id) {
           <div className={style.foodContainer}>
             <p className={style.title}>{food.title}</p>
             <div className={style.imgContainer}>
-              <img src={food.image} className={style.img} alt="dog" />
+              <img src={food.image} className={style.img} alt="recipe" />
             </div>
             <div className={style.dataContainer}>
               <p className={style.info}>Weight: {food.weight} kg</p>

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import style from './nav.module.css'
 import SearchBar from './../searchBar/SearchBar'
-
+//import FilterSort from '../filtersort/FilterSort'
 //! Simple Nav Bar including SearchBar Component
 export function Nav({ setInput, input }) {
   return (

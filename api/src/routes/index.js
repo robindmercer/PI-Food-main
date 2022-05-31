@@ -27,7 +27,7 @@ router.get('/recipes', function (req, res, next) {
     if (name) {
         try {
             console.log('name: ', name);
-            url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APPY_KEY}&titleMatch=${name}`
+            url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APPY_KEY}&titleMatch=${name}&addRecipeInformation=true`
             console.log('url: ', url);
             recipeApi = axios.get(url,
             recipeDb = Recipe.findAll({
@@ -46,7 +46,7 @@ router.get('/recipes', function (req, res, next) {
             next(error)
         }
     } else {
-        url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APPY_KEY}&number=100`
+        url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APPY_KEY}&number=10&addRecipeInformation=true`
         console.log('url: ', url);
         recipeApi = axios.get(url);
         recipeDb = Recipe.findAll({
@@ -63,10 +63,11 @@ router.get('/recipes', function (req, res, next) {
                 return {
                     id: recipe.id,
                     title: recipe.title,
-                    image: recipe.image
+                    image: recipe.image,
+                    dishTypes: recipe.dishTypes
                 }
             })
-           // console.log('filterRecipeApi: ', filterRecipeApi);
+            console.log('filterRecipeApi: ', filterRecipeApi);
            //console.log('charDb: ', charDb);
             let allRecipes = [...filterRecipeApi, ...charDb]
             res.send(allRecipes);

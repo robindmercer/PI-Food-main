@@ -54,7 +54,7 @@ const rootReducer = (state = initialState, action) => {
   }
 
   //! Reducer to get tipo
-  if (action.type === 'GET_TIPO') {
+  if (action.type === 'GET_TIPOS') {
     return {
       ...state,
       loading: true,
@@ -113,18 +113,18 @@ const rootReducer = (state = initialState, action) => {
     }
   }
 
-  //! Promedy weight range to get a number and be able to order
-  state.allFoods.forEach((b) => {
-    if (typeof b.weight === 'string') {
-      let range = b.weight.split('- ')
-      let promedy = (parseInt(range[0]) + parseInt(range[1])) / 2
-      b.weight = promedy
-    }
-    // if (typeof b.weight === 'number') {
-    //   let promedy = (b.weight[0])
-    //   b.weight = promedy
-    // }
-  })
+  // //! Promedy weight range to get a number and be able to order
+  // state.allFoods.forEach((b) => {
+  //   if (typeof b.weight === 'string') {
+  //     let range = b.weight.split('- ')
+  //     let promedy = (parseInt(range[0]) + parseInt(range[1])) / 2
+  //     b.weight = promedy
+  //   }
+  //   // if (typeof b.weight === 'number') {
+  //   //   let promedy = (b.weight[0])
+  //   //   b.weight = promedy
+  //   // }
+  // })
 
   //! Reducer to get foods ordered by weight promedy Light to Heavy
   if (action.type === 'LH') {

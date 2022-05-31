@@ -31,7 +31,7 @@ function validateForm(input) {
   return errors
 }
 
-//! Create Page Component - Function to create a new Dog Food
+//! Create Page Component - Function to create a new Recipe
 function Create() {
   const [errors, setErrors] = useState({})
   const [touched, setTouched] = useState({})
@@ -40,7 +40,7 @@ function Create() {
     height: '',
     weight: '',
     life_span: '',
-    temperament: [],
+    tipo: [],
   })
 
   const dispatch = useDispatch()
@@ -80,18 +80,18 @@ function Create() {
     e.preventDefault()
     if (!errors.name && !errors.weight && !errors.height && !errors.life_span) {
       axios
-        .post('/dogs', input)
+        .post('/recipe', input)
         .then((r) => {
-          alert('Your Custom Dog was added to the Database. ╰(*°▽°*)╯')
+          alert('Your Recipe was added to the Database')
           setInput({
             name: '',
-            height: '',
+            title: '',
             weight: '',
             life_span: '',
-            temperament: [],
+            tipo: [],
           })
         })
-        .catch((res) => alert('Could not create Custom Dog'))
+        .catch((res) => alert('Could not create Recipe'))
     } else {
       alert('Ups... there was a problem ¯_(ツ)_/¯')
     }
@@ -99,21 +99,21 @@ function Create() {
 
   //! Create Page Component - Function to handle repeated tipo selected
   function handleSelect(e) {
-    if (input.temperament.includes(parseInt(e.target.value))) {
+    if (input.tipo.includes(parseInt(e.target.value))) {
       alert('Please, don´t repeat yourself (•_•)')
     } else {
       setInput((prev) => ({
         ...prev,
-        temperament: [...prev.temperament, parseInt(e.target.value)],
+        tipo: [...prev.tipo, parseInt(e.target.value)],
       }))
     }
   }
 
-  //! Create Page Component - Function to delete a selected temperament
+  //! Create Page Component - Function to delete a selected tipo
   function deleteTemp(_e, t) {
     setInput((prev) => ({
       ...prev,
-      temperament: prev.temperament.filter((temp) => temp !== parseInt(t)),
+      tipo: prev.tipo.filter((temp) => temp !== parseInt(t)),
     }))
   }
 
@@ -139,7 +139,7 @@ function Create() {
             <input
               type="text"
               name="name"
-              placeholder="Dog Name"
+              placeholder="Recipe Title"
               onChange={handleInput}
               required="required"
               onFocus={onFocus}
@@ -210,9 +210,9 @@ function Create() {
             onChange={(e) => handleSelect(e)}
             className={style.select}
             required
-            value={input.temperament}
+            value={input.tipo}
           >
-            <option>Choose temperament</option>
+            <option>Choose tipo</option>
 
             {tipo.map((e) => (
               <option value={e.id} key={e.id}>
@@ -222,8 +222,8 @@ function Create() {
           </select>
         </div>
         <div className={style.tempButtons}>
-          {input.temperament.map((t) => (
-            <p id={t} className={style.temperament}>
+          {input.tipo.map((t) => (
+            <p id={t} className={style.tipo}>
               {getNames([t])}{' '}
               <button
                 type="button"
@@ -236,7 +236,7 @@ function Create() {
           ))}
         </div>
         <button className={style.button} type="submit">
-          Create Dog Food
+          Create Recipe
         </button>
       </form>
     </div>
