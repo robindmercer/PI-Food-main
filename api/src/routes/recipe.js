@@ -1,23 +1,22 @@
 require('dotenv').config();
 const { APPY_KEY } = process.env;
-const { Router } = require('express');
 const axios = require('axios')
-const { Recipe, Tipo } = require('../db');
-const { Op } = require('sequelize');
+const { Recipe, Tipo } = require('../db')
+const { Op } = require('sequelize')
+const { Router } = require('express');
 const router = Router();
 
-router.get('/', (req, res, next) => {
+router.get('/', function (req, res, next) {
     let name = req.query.name;
     let recipeApi
     let recipeDb
     let url
     if (name) {
         try {
-            console.log('name: ', name);
-            url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APPY_KEY}&titleMatch=${name}`
+            url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APPY_KEY}&titleMatch=${name}&addRecipeInformation=true`
             console.log('url: ', url);
             recipeApi = axios.get(url,
-            recipeDb = Recipe.findAll({
+                recipeDb = Recipe.findAll({
                     //include: Tipos,
                     where: {
                         title: {
@@ -33,8 +32,7 @@ router.get('/', (req, res, next) => {
             next(error)
         }
     } else {
-        url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APPY_KEY}`
-        console.log('url: ', url);
+        url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APPY_KEY}&number=100&addRecipeInformation=true`
         recipeApi = axios.get(url);
         recipeDb = Recipe.findAll({
             include: Tipo
@@ -50,9 +48,12 @@ router.get('/', (req, res, next) => {
                 return {
                     id: recipe.id,
                     title: recipe.title,
-                    image: recipe.image
+                    image: recipe.image,
+                    diets: recipe.diets
                 }
             })
+            //console.log('filterRecipeApi: ', filterRecipeApi);
+            //console.log('charDb: ', charDb);
             let allRecipes = [...filterRecipeApi, ...charDb]
             res.send(allRecipes);
         })
@@ -61,7 +62,30 @@ router.get('/', (req, res, next) => {
         })
 })
 
-router.get('/:id', async (req, res, next) => {
+
+router.post('/', async function (req, res, next) {
+    const { title,likes,summary,healthScore,instructions,tipo } = req.body;
+    if (!title || !likes || !summary || !healthScore || !instructions) {
+        return res.send("Falta información para poder darte de alta la receta")
+    }
+    try {
+        const newRecipe = await Recipe.create({ 
+            title,
+            likes,
+            summary,
+            healthScore,
+            instructions, image: "https://www.google.com/imgres?imgurl=https%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-s%2F17%2Ff5%2F39%2Ff7%2Ffooood-at-the-food-department.jpg&imgrefurl=https%3A%2F%2Fwww.tripadvisor.com.ar%2FRestaurant_Review-g188590-d16869641-Reviews-The_Food_Department-Amsterdam_North_Holland_Province.html&tbnid=ll-VQyXmHSo60M&vet=12ahUKEwj1q8nimp74AhVdNbkGHXF8BNQQMygJegUIARDqAQ..i&docid=TGH-GZw8jj2heM&w=550&h=367&q=food&ved=2ahUKEwj1q8nimp74AhVdNbkGHXF8BNQQMygJegUIARDqAQ"
+        })
+        const newTipo = await newRecipe.setTipos(tipo)
+        res.send("Receta Creada");
+    } catch (error) {
+        console.log('Error', req.body)
+        next(error)
+    }
+})
+
+router.get('/detail/:id', async (req, res, next) => {
+    //console.log('detail: ');
     try {
         const id = req.params.id
         let recipe
@@ -70,72 +94,29 @@ router.get('/:id', async (req, res, next) => {
             res.send(recipe);
         } else {
             url = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${APPY_KEY}`
+            //console.log('url: ', url);
             response = await axios.get(url);
             recipe = response.data
+            console.log('recipe: ', recipe);
             res.send(recipe);
         }
     } catch (error) {
-        console.log('error: ', error);
-
+        next(error)
     }
 })
 
-// esto es mi para hacer pruebas 
-router.post('/all', async (req, res, next) => {
-    const eq = await Recipe.bulkCreate([
-        { title:"Huevo Frito", resumen:"Hacer un huevo frito", puntuacion:2, nivel:3, receta:"Agarra una sarten ponele aceite y frei un huevo" },
-        { title:"Huevo Hervido", resumen:"Hacer un huevo duro", puntuacion:2, nivel:3, receta:"Agarra una sarten ponele agua y hervi un huevo" }
-    ]).then(() => console.log("Recetas data have been saved"));
-
-    const eq2 = await Tipo.bulkCreate([
-        {nombre: "main course"},
-        {nombre: "side dish"},
-        {nombre: "dessert"},
-        {nombre: "appetizer"},
-        {nombre: "salad"},
-        {nombre: "bread"},
-        {nombre: "breakfast"},
-        {nombre: "soup"},
-        {nombre: "beverage"},
-        {nombre: "sauce"},
-        {nombre: "marinade"},
-        {nombre: "fingerfood"},
-        {nombre: "snack"},
-        {nombre: "drink"}
-    ]).then(() => console.log("Tipo have been saved"));
-    res.json("ok")
-})
-
-router.post('/', async (req, res, next) => {
-    const { title, resumen, puntuacion, nivel, receta } = req.body;
-    if (!title || !resumen || !puntuacion || !nivel || !receta ) {
-         return res.send("Falta informacion para poder darte de alta la receta")
-    }
-    try {
-        const newRecipe = await Recipe.create({ title, resumen, puntuacion, nivel, receta })
-        res.send(newRecipe);
-    } catch (error) {
-        res.send(error.message);
-    }
-})
-
-router.post('/:chid/episode/:epid', async (req, res, next) => {
-    try {
-        const { chid, epid } = req.params;
-        const recipe = await Recipes.findByPk(chid)
-        await recipe.addEpisodes(epid)
-        res.send(recipe);
-    } catch (error) {
-        res.send(error.message);
-    }
-})
+// router.get('/tipos', function (_req, res, next) {
+//   //! Getting all tipos from DB
+//   try {
+//     Tipo.findAll({ order: [['nombre', 'asc']] }).then((resp) => {
+//       resp.length
+//         ? res.send(resp)
+//         : res.send({ message: 'Could not get tipos' })
+//     })
+//   } catch (error) {
+//     next(error)
+//   }
+// })
 
 
-router.put('/', (req, res, next) => {
-    res.send("put Recipes");
-})
-
-router.delete('/', (req, res, next) => {
-    res.send("delete Recipes");
-})
-module.exports = router;
+module.exports = router

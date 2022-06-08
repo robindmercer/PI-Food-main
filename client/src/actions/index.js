@@ -1,70 +1,77 @@
-import axios from 'axios'
+import axios from "axios";
+import { GET_FOODS, GET_FOOD_DETAIL, GET_TIPOS, FILTER,RESET_FOOD, GET_PLATOS,SET_LOADING } from './constants'
 
-export const GET_FOODS = 'GET_FOODS'
-export const GET_FOOD = 'GET_FOOD'
-export const GET_TIPOS = 'GET_TIPOS'
-export const FILTER = 'FILTER'
-export const SET_LOADING = 'SET_LOADING'
-
-//! Sends Action to get all breeds
+// comunico con el Back 
+// Busco recetas
 export function getFoods() {
-  return function (dispatch) {
-    return axios.get('/recipes/')
-      .then((response) => response.data)
-      .then((json) => {
-        dispatch({ type: GET_FOODS, payload: json })
-      })
-  }
+    return async function (dispatch) {
+        var recetas = await axios.get('/recipes');
+        return dispatch({
+            type: GET_FOODS,
+            payload: recetas.data
+        })
+    }
 }
 
-//! Sends Action to get food by query
-export function getFood(name) {
-  return function (dispatch) {
-    return axios
-      .get(`/recipes?name=${name}`)
-      .then((response) => response.data)
-      .then((json) => {
-        dispatch({ type: GET_FOOD, payload: json })
-      })
-  }
+// Busco una recetas por id
+export function getFood(id) {
+    return async function (dispatch) {
+        var receta = await axios.get(`/recipes/detail/${id}`);
+        return dispatch({
+            type: GET_FOOD_DETAIL,
+            payload: receta.data
+        })
+    }
 }
-
-//! Sends Action to get all tipos
+// Tipo de Dieta Action (trae todos)
 export function getTipos() {
-  return function (dispatch) {
-    return axios
-      .get(`/tipos`)
-      .then((response) => response.data)
-      .then((json) => {
-        dispatch({ type: GET_TIPOS, payload: json })
-      })
+    return async function (dispatch) {
+      const tipos = await axios.get(`/tipos`);
+        return dispatch({
+             type: GET_TIPOS, 
+             payload: tipos.data 
+        });
+    }
   }
-}
 
+// Tipo de Platos Action (trae todos)
+export function getPlatos() {
+    console.log('Action ->getPlatos');
+    return async function (dispatch) {
+      const platos = await axios.get(`/platos`);
+      return dispatch({
+          type: GET_PLATOS, 
+          payload: platos.data 
+        });
+    }
+  }
+
+// Loading advise
 export function setLoading() {
-  return {
-    type: SET_LOADING,
+    return {
+      type: SET_LOADING,
+    }
   }
-}
 
-//! Sends Action to set filter
+
+// Filter Action
 export function filter(payload) {
-  return {
-    type: FILTER,
-    payload,
-  }
+    return {
+        type: FILTER,
+        payload,
+    }
 }
 
-//! Sends Action to set sorting
+//! Sort Action
 export function sortFoods(order) {
-  return {
-    type: order,
-  }
+    return {
+        type: order,
+    }
 }
 
-//! Sends Action to set order by weight
-// export function orderByWeight(order) {
-//   return {
-//     type: order,
-//   }
-// }
+
+export function resetFood() {
+    return {
+        type: RESET_FOOD
+    }
+}

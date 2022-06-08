@@ -1,3 +1,7 @@
+//****************/
+// RECETAS
+//****************/
+
 const { DataTypes, Sequelize } = require('sequelize');
 
 module.exports = (sequelize) => {
@@ -12,19 +16,22 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    resumen: {
+    summary: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    puntuacion: {
+    likes: {
       type: DataTypes.STRING,
     },
-    nivel: {
+    healthScore: { //Nivel de "comida saludable"
       type: DataTypes.STRING,
     },
-    receta: {
+    instructions: {
       type: DataTypes.STRING,
     },
+    image:{
+    type: DataTypes.STRING,
+    }
   },
     { timestamps: false }
   );

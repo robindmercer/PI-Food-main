@@ -1,162 +1,112 @@
 {
   "vegetarian": true,
   "vegan": true,
-  "glutenFree": false,
+  "glutenFree": true,
   "dairyFree": true,
   "veryHealthy": true,
   "cheap": false,
-  "veryPopular": true,
+  "veryPopular": false,
   "sustainable": false,
   "lowFodmap": false,
-  "weightWatcherSmartPoints": 19,
+  "weightWatcherSmartPoints": 5,
   "gaps": "no",
   "preparationMinutes": -1,
   "cookingMinutes": -1,
-  "aggregateLikes": 1669,
-  "healthScore": 77,
-  "creditsText": "Jen West",
-  "sourceName": "Pink When",
-  "pricePerServing": 83.23,
+  "aggregateLikes": 19,
+  "healthScore": 92,
+  "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+  "license": "CC BY 3.0",
+  "sourceName": "Foodista",
+  "pricePerServing": 69.09,
   "extendedIngredients": [
     {
-      "id": 2044,
-      "aisle": "Produce",
-      "image": "fresh-basil.jpg",
-      "consistency": "SOLID",
-      "name": "basil",
-      "nameClean": "fresh basil",
-      "original": "1/4 cup basil",
-      "originalName": "basil",
-      "amount": 0.25,
-      "unit": "cup",
+      "id": 2069,
+      "aisle": "Oil, Vinegar, Salad Dressing",
+      "image": "balsamic-vinegar.jpg",
+      "consistency": "LIQUID",
+      "name": "balsamic vinegar",
+      "nameClean": "balsamic vinegar",
+      "original": "3 tablespoons balsamic vinegar",
+      "originalName": "balsamic vinegar",
+      "amount": 3.0,
+      "unit": "tablespoons",
       "meta": [],
       "measures": {
         "us": {
-          "amount": 0.25,
-          "unitShort": "cups",
-          "unitLong": "cups"
+          "amount": 3.0,
+          "unitShort": "Tbsps",
+          "unitLong": "Tbsps"
         },
         "metric": {
-          "amount": 59.147,
-          "unitShort": "ml",
-          "unitLong": "milliliters"
+          "amount": 3.0,
+          "unitShort": "Tbsps",
+          "unitLong": "Tbsps"
         }
       }
     },
     {
-      "id": 20081,
-      "aisle": "Baking",
-      "image": "flour.png",
+      "id": 11215,
+      "aisle": "Produce",
+      "image": "garlic.png",
       "consistency": "SOLID",
-      "name": "flour",
-      "nameClean": "wheat flour",
-      "original": "1 cup flour",
-      "originalName": "flour",
+      "name": "garlic",
+      "nameClean": "garlic",
+      "original": "1 clove garlic, minced",
+      "originalName": "garlic, minced",
       "amount": 1.0,
-      "unit": "cup",
-      "meta": [],
+      "unit": "clove",
+      "meta": [
+        "minced"
+      ],
       "measures": {
         "us": {
           "amount": 1.0,
-          "unitShort": "cup",
-          "unitLong": "cup"
+          "unitShort": "clove",
+          "unitLong": "clove"
         },
         "metric": {
-          "amount": 236.588,
-          "unitShort": "ml",
-          "unitLong": "milliliters"
+          "amount": 1.0,
+          "unitShort": "clove",
+          "unitLong": "clove"
         }
       }
     },
     {
-      "id": 1022020,
-      "aisle": "Spices and Seasonings",
-      "image": "garlic-powder.png",
-      "consistency": "SOLID",
-      "name": "garlic powder",
-      "nameClean": "garlic powder",
-      "original": "1/4 garlic powder",
-      "originalName": "garlic powder",
-      "amount": 0.25,
-      "unit": "",
-      "meta": [],
-      "measures": {
-        "us": {
-          "amount": 0.25,
-          "unitShort": "",
-          "unitLong": ""
-        },
-        "metric": {
-          "amount": 0.25,
-          "unitShort": "",
-          "unitLong": ""
-        }
-      }
-    },
-    {
-      "id": 1062047,
-      "aisle": "Spices and Seasonings",
-      "image": "garlic-salt.jpg",
-      "consistency": "SOLID",
-      "name": "garlic salt",
-      "nameClean": "garlic salt",
-      "original": "garlic salt with parsley (to sprinkle)",
-      "originalName": "garlic salt with parsley (to sprinkle)",
-      "amount": 2.0,
-      "unit": "servings",
-      "meta": [
-        "with parsley (to sprinkle)"
-      ],
-      "measures": {
-        "us": {
-          "amount": 2.0,
-          "unitShort": "servings",
-          "unitLong": "servings"
-        },
-        "metric": {
-          "amount": 2.0,
-          "unitShort": "servings",
-          "unitLong": "servings"
-        }
-      }
-    },
-    {
-      "id": 11352,
+      "id": 11233,
       "aisle": "Produce",
-      "image": "potatoes-yukon-gold.png",
+      "image": "kale.jpg",
       "consistency": "SOLID",
-      "name": "potatoes",
-      "nameClean": "potato",
-      "original": "4 sliced, fresh potatoes",
-      "originalName": "sliced, fresh potatoes",
-      "amount": 4.0,
-      "unit": "",
+      "name": "kale",
+      "nameClean": "kale",
+      "original": "1 bunch curly kale, stems removed and chopped",
+      "originalName": "curly kale, stems removed and chopped",
+      "amount": 1.0,
+      "unit": "bunch",
       "meta": [
-        "fresh",
-        "sliced"
+        "chopped"
       ],
       "measures": {
         "us": {
-          "amount": 4.0,
-          "unitShort": "",
-          "unitLong": ""
+          "amount": 1.0,
+          "unitShort": "bunch",
+          "unitLong": "bunch"
         },
         "metric": {
-          "amount": 4.0,
-          "unitShort": "",
-          "unitLong": ""
+          "amount": 1.0,
+          "unitShort": "bunch",
+          "unitLong": "bunch"
         }
       }
     },
     {
-      "id": 4513,
-      "aisle": null,
-      "image": null,
-      "consistency": "SOLID",
-      "name": "vegetable oil",
-      "nameClean": null,
-      "original": "vegetable oil",
-      "originalName": "vegetable oil",
+      "id": 4053,
+      "aisle": "Oil, Vinegar, Salad Dressing",
+      "image": "olive-oil.jpg",
+      "consistency": "LIQUID",
+      "name": "olive oil",
+      "nameClean": "olive oil",
+      "original": "Olive oil",
+      "originalName": "Olive oil",
       "amount": 2.0,
       "unit": "servings",
       "meta": [],
@@ -174,37 +124,96 @@
       }
     }
   ],
-  "id": 715594,
-  "title": "Homemade Garlic and Basil French Fries",
+  "id": 644387,
+  "title": "Garlicky Kale",
   "readyInMinutes": 45,
   "servings": 2,
-  "sourceUrl": "http://www.pinkwhen.com/homemade-french-fries/",
+  "sourceUrl": "http://www.foodista.com/recipe/J2FTJBF7/garlicky-kale",
   "openLicense": -1,
-  "image": "https://spoonacular.com/recipeImages/715594-556x370.jpg",
+  "image": "https://spoonacular.com/recipeImages/644387-556x370.jpg",
   "imageType": "jpg",
-  "summary": "The recipe Homemade Garlic and Basil French Fries is ready <b>in roughly 45 minutes</b> and is definitely a super <b>vegan</b> option for lovers of American food. One serving contains <b>596 calories</b>, <b>18g of protein</b>, and <b>15g of fat</b>. For <b>83 cents per serving</b>, you get a side dish that serves 2. Several people made this recipe, and 1669 would say it hit the spot. If you have garlic salt, flour, garlic powder, and a few other ingredients on hand, you can make it. All things considered, we decided this recipe <b>deserves a spoonacular score of 100%</b>. This score is outstanding. Try <a href=\"https://spoonacular.com/recipes/homemade-french-fries-with-fresh-garlic-and-dill-494220\">Homemade French Fries with Fresh Garlic and Dill</a>, <a href=\"https://spoonacular.com/recipes/roasted-garlic-french-fries-519898\">Roasted Garlic French Fries</a>, and <a href=\"https://spoonacular.com/recipes/sweet-potato-fries-with-basil-salt-and-garlic-mayonnaise-120735\">Sweet Potato Fries With Basil Salt and Garlic Mayonnaise</a> for similar recipes.",
-  "cuisines": [
-    "American"
-  ],
+  "summary": "Garlicky Kale might be just the side dish you are searching for. This caveman, gluten free, primal, and whole 30 recipe serves 2 and costs <b>69 cents per serving</b>. One serving contains <b>179 calories</b>, <b>3g of protein</b>, and <b>15g of fat</b>. A few people made this recipe, and 17 would say it hit the spot. If you have olive oil, garlic, curly kale, and a few other ingredients on hand, you can make it. From preparation to the plate, this recipe takes around <b>45 minutes</b>. All things considered, we decided this recipe <b>deserves a spoonacular score of 99%</b>. This score is awesome. Try <a href=\"https://spoonacular.com/recipes/garlicky-kale-248759\">Garlicky Kale</a>, <a href=\"https://spoonacular.com/recipes/garlicky-kale-14910\">Garlicky Kale</a>, and <a href=\"https://spoonacular.com/recipes/garlicky-kale-crostini-15010\">Garlicky Kale Crostini</a> for similar recipes.",
+  "cuisines": [],
   "dishTypes": [
-    "lunch",
-    "main course",
-    "main dish",
-    "dinner"
+    "side dish"
   ],
   "diets": [
+    "gluten free",
     "dairy free",
+    "paleolithic",
     "lacto ovo vegetarian",
+    "primal",
+    "whole 30",
     "vegan"
   ],
   "occasions": [],
-  "winePairing": {
-    "pairedWines": [],
-    "pairingText": "",
-    "productMatches": []
-  },
-  "instructions": null,
-  "analyzedInstructions": [],
+  "winePairing": {},
+  "instructions": "<ol><li>Heat the olive oil in a large pot over medium heat.</li><li>Add the kale and cover.</li><li>Stir occasionally until the volume of the kale is reduced by half. Uncover. Add garlic and basalmic.</li><li>Allow to cook for about another 30 seconds or so, mixing well so that the garlic and vinegar are well distributed.</li><li>Serve hot.</li></ol>",
+  "analyzedInstructions": [
+    {
+      "name": "",
+      "steps": [
+        {
+          "number": 1,
+          "step": "Heat the olive oil in a large pot over medium heat.",
+          "ingredients": [
+            {
+              "id": 4053,
+              "name": "olive oil",
+              "localizedName": "olive oil",
+              "image": "olive-oil.jpg"
+            }
+          ],
+          "equipment": [
+            {
+              "id": 404752,
+              "name": "pot",
+              "localizedName": "pot",
+              "image": "stock-pot.jpg"
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "step": "Add the kale and cover.Stir occasionally until the volume of the kale is reduced by half. Uncover.",
+          "ingredients": [
+            {
+              "id": 11233,
+              "name": "kale",
+              "localizedName": "kale",
+              "image": "kale.jpg"
+            }
+          ],
+          "equipment": []
+        },
+        {
+          "number": 3,
+          "step": "Add garlic and basalmic.Allow to cook for about another 30 seconds or so, mixing well so that the garlic and vinegar are well distributed.",
+          "ingredients": [
+            {
+              "id": 2053,
+              "name": "vinegar",
+              "localizedName": "vinegar",
+              "image": "vinegar-(white).jpg"
+            },
+            {
+              "id": 11215,
+              "name": "garlic",
+              "localizedName": "garlic",
+              "image": "garlic.png"
+            }
+          ],
+          "equipment": []
+        },
+        {
+          "number": 4,
+          "step": "Serve hot.",
+          "ingredients": [],
+          "equipment": []
+        }
+      ]
+    }
+  ],
   "originalId": null,
-  "spoonacularSourceUrl": "https://spoonacular.com/homemade-garlic-and-basil-french-fries-715594"
+  "spoonacularSourceUrl": "https://spoonacular.com/garlicky-kale-644387"
 }

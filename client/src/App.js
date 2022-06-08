@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Landing from './views/landing/landing'
-import Home from './views/home/Home'
-import { Nav } from './components/nav/Nav'
-import Food from './views/food/Food'
-import CreateFood from './views/createFood/CreateFood'
+import Landing from './componentes/Landing/Landing'
+import Home from './componentes/Home/Home'
+import { Nav } from './componentes/Nav/Nav'
+import CreateFood from './componentes/CreateFood/CreateFood'
+import Detail from './componentes/Detail/Detail'
 import './App.css';
 
 function App() {
@@ -23,8 +23,8 @@ function App() {
           <Route exact path="/create" component={CreateFood} />
           <Route
             exact
-            path="/detail/:id"
-            render={({ match }) => <Food id={match.params.id}></Food>}
+            path="/recipes/detail/:id"
+            render={({ match }) => <Detail id={match.params.id}></Detail>}
           ></Route>
         </Route>
       </Switch>    
