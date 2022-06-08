@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { sortFoods, getTipos,filter } from '../../actions/index'
-//import { orderByWeight } from '../../actions/index'
 import { useSelector, useDispatch } from 'react-redux'
 import style from './filtersort.module.css'
 
@@ -15,7 +14,9 @@ function FilterSort() {
   //! Importing tipos and all foods to handle filtering
   const tipos = useSelector((state) => state.tipo)
   const foods = useSelector((state) => state.allFoods)
-
+  
+  console.log('state.allFoods: ', foods);
+  console.log('state.tipos: ',  tipos);
 
   
   let [selectedTemp, setSelectedTemp] = useState('')
