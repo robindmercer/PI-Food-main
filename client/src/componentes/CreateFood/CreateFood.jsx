@@ -29,7 +29,7 @@ function validateForm(input) {
     errors.likes = ''
   }
   if (!input.instructions) {
-    errors.instructions = 'Recipe is required'
+    errors.instructions = 'Instructions is required'
   } else {
     errors.instructions = ''
   }
@@ -160,7 +160,7 @@ function Create() {
               value={input.title}
               className={style.input}
             ></input>
-            {errors.title && touched.name && (
+            {errors.title && touched.title && (
               <p className={style.error}>{errors.title}</p>
             )}
           </div>
@@ -185,14 +185,14 @@ function Create() {
           <div className={style.inputContainer}>
             <label htmlFor="healthScore" className={style.secondTitle}>Food Health Level</label>
             <input
-              type="text"
+              type="number"
               name="healthScore"
               placeholder="Health Level"
               onChange={handleInput}
               required="required"
               onFocus={onFocus}
               value={input.healthScore}
-              className={style.input}
+              className={style.inputNumbers}
             ></input>
             {errors.healthScore && touched.healthScore && (
               <p className={style.error}>{errors.healthScore}</p>
@@ -202,14 +202,14 @@ function Create() {
           <div className={style.inputContainer}>
           <label htmlFor="likes" className={style.secondTitle}>Likes</label>
             <input
-              type="text"
+              type="number"
               name="likes"
               placeholder="Likes"
               onChange={handleInput}
               required="required"
               onFocus={onFocus}
               value={input.likes}
-              className={style.input }
+              className={style.inputNumbers }
             ></input>
             {errors.likes && touched.likes && (
               <p className={style.error}>{errors.likes}</p>
@@ -218,10 +218,10 @@ function Create() {
 
 
           <div className={style.inputContainer}>
-          <label htmlFor="instruction" className={style.secondTitle}>Instructions</label>
+          <label htmlFor="instructions" className={style.secondTitle}>Instructions</label>
             <textarea
               type="text"
-              name="instruction"
+              name="instructions"
               placeholder="Instructions"
               onChange={handleInput}
               required="required"
