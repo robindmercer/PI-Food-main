@@ -9,15 +9,14 @@ export default function Food(id) {
   const food = useSelector(state => state.foodDetail)
 
   const dispatch = useDispatch()
-  console.log('food: ', food);
   useEffect(() => {
     dispatch(getFood(id.id))
+
     return (
       dispatch(resetFood())
     )
     // eslint-disable-next-line
   }, [])
-
 
   // Convierte HTML
   function createMarkup(xtext) {
@@ -30,6 +29,8 @@ export default function Food(id) {
     });
   }
 
+  let newArray = []
+  
   return (
     <div className={style.mainContainer}>
       <div className={style.secondContainer}>
@@ -53,24 +54,24 @@ export default function Food(id) {
             <div className={style.dataContainer}>
               <label className={style.info}><b>Health Score: </b>{food.healthScore}</label>
               {food.aggregateLikes ? (
-                <label className={style.info}><b>Likes: </b>{food.aggregateLikes}</label>
+                <label className={style.info}><b>Likes:&nbsp;</b>{food.aggregateLikes}</label>
               ) :
-                <label className={style.info}><b>Likes: </b>{food.likes}</label>
+                <label className={style.info}><b>Likes:&nbsp;</b>{food.likes}</label>
               }
               {food.diets ? (
-                <label className={style.info}><b>Diets: </b>{capitalizeWords(food.diets).join(', ')}</label>
+                <label className={style.info}><b>Diets:&nbsp;</b>{capitalizeWords(food.diets).join(', ')}</label>
               ) : null}
               {food.dishTypes ? (
-                <label className={style.info}><b>Dish Types: </b>{capitalizeWords(food.dishTypes).join(', ')}</label>
+                <label className={style.info}><b>Dish Types:&nbsp; </b>{capitalizeWords(food.dishTypes).join(', ')}</label>
               ) : null}
               {food.tipos ? (
-                <div className={style.info}>
-                  <div className={style.tempButtons}><b>Dish Types: </b> 
-                    {food.tipos &&
-                      food.tipos.map((t) => {
-                        return <label className={style.temperament}>{t.nombre}</label>
-                      })}
-                  </div>
+                <div className={style.dataContainer}>
+                  {food.tipos &&
+                    food.tipos.map((t) => {
+                      newArray.push(t.nombre)
+                      // return <label className={style.info}>{t.nombre}</label>
+                    })}
+                  <label className={style.info}><b>Dish Types:&nbsp; </b>{capitalizeWords(newArray).join(', ')}</label>
                 </div>
               ) : null}
             </div>

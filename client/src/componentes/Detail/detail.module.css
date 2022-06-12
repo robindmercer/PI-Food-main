@@ -82,6 +82,8 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  margin-left: 52px;
+  margin-right: 20px;  
 }
 
 
