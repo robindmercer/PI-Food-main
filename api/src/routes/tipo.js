@@ -3,7 +3,7 @@ const { Tipo } = require('../db')
 const router = Router();
 
 router.get('/', function (_req, res, next) {
-    //! Getting all tipo de dieta from DB
+    // Getting all tipo de dieta from DB
     try {
       Tipo.findAll({ order: [['nombre', 'asc']] }).then((resp) => {
         resp.length

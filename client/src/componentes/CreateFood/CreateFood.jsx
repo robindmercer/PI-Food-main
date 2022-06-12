@@ -1,10 +1,10 @@
-import  {React, useEffect, useState } from 'react'
+import { React, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTipos } from '../../actions/index'
 import axios from 'axios'
 import style from './create.module.css'
 
-//!  - With Form and Validators
+//  - With Form and Validators
 function validateForm(input) {
   let errors = {}
   if (!input.title) {
@@ -21,7 +21,11 @@ function validateForm(input) {
   if (!input.healthScore) {
     errors.healthScore = 'Food Health is required'
   } else {
-    errors.healthScore = ''
+    if (input.healthScore > 999) {
+      errors.healthScore = 'Sorry Helth Score is from 0 to 999'
+    } else {
+      errors.healthScore = ''
+    }
   }
   if (!input.likes) {
     errors.likes = 'Puntuacion is required'
@@ -36,7 +40,7 @@ function validateForm(input) {
   return errors
 }
 
-//! 
+// Crea nueva receta
 function Create() {
   const [errors, setErrors] = useState({})
   const [touched, setTouched] = useState({})
@@ -58,7 +62,7 @@ function Create() {
   }, [])
 
   const tipos = useSelector((state) => state.tipo)
-  
+
   // Handle Inputs
   function handleInput(e) {
     setInput({
@@ -81,12 +85,12 @@ function Create() {
     })
   }
 
-  
+
 
   //  - Function to handle the submit
   function handleSubmit(e) {
     e.preventDefault()
-    console.log('e: ', input);
+    //console.log('e: ', input);
     if (!errors.title && !errors.summary && !errors.healthScore && !errors.instructions && !errors.likes) {
       axios
         .post('/recipes', input)
@@ -102,9 +106,9 @@ function Create() {
           })
         })
         .catch((res) => {
-          console.log('Error',res)
-           alert('Could not create Recipe')
-          })
+          console.log('Error', res)
+          alert('Could not create Recipe')
+        })
     } else {
       alert('Ups... there was a problem')
     }
@@ -130,7 +134,7 @@ function Create() {
     }))
   }
 
-  //!  Get names of tipos
+  //  Get names of tipos
   function getNamesTipo(arr) {
     let names = []
     tipos.forEach((t) => {
@@ -142,7 +146,7 @@ function Create() {
     })
     return names
   }
-// renderizo
+  // renderizo
   return (
     <div className={style.container}>
       <form onSubmit={handleSubmit} className={style.formDetail}>
@@ -156,7 +160,7 @@ function Create() {
               placeholder="Youre recipe title"
               onChange={handleInput}
               required="required"
-              onFocus={onFocus}
+              onBlur={onFocus}
               value={input.title}
               className={style.input}
             ></input>
@@ -173,7 +177,7 @@ function Create() {
               placeholder="Give me a little Summary"
               onChange={handleInput}
               required="required"
-              onFocus={onFocus}
+              onBlur={onFocus}
               value={input.summary}
               className={style.textareaStyle}
             ></textarea>
@@ -181,51 +185,56 @@ function Create() {
               <p className={style.error}>{errors.summary}</p>
             )}
           </div>
+          <div className={style.inputNumberContainer}>
+            <div className={style.inputContainer}>
+              <label htmlFor="healthScore" className={style.secondTitle}>Food Health Level</label>
+              <input
+                type="number"
+                name="healthScore"
+                placeholder="Health Level"
+                onChange={handleInput}
+                required="required"
+                min="0"
+                max="999"
+                onBlur={onFocus}
+                value={input.healthScore}
+                className={style.inputNumbers}
+              ></input>
+              {errors.healthScore && touched.healthScore && (
+                <p className={style.error}>{errors.healthScore}</p>
+              )}
+            </div>
 
-          <div className={style.inputContainer}>
-            <label htmlFor="healthScore" className={style.secondTitle}>Food Health Level</label>
-            <input
-              type="number"
-              name="healthScore"
-              placeholder="Health Level"
-              onChange={handleInput}
-              required="required"
-              onFocus={onFocus}
-              value={input.healthScore}
-              className={style.inputNumbers}
-            ></input>
-            {errors.healthScore && touched.healthScore && (
-              <p className={style.error}>{errors.healthScore}</p>
-            )}
+            <div className={style.inputContainer}>
+              <label htmlFor="likes" className={style.secondTitle}>Likes</label>
+              <input
+                type="number"
+                name="likes"
+                placeholder="Likes"
+                min="0"
+                max="999"
+                onChange={handleInput}
+                required="required"
+                onBlur={onFocus}
+                value={input.likes}
+                className={style.inputNumbers}
+              ></input>
+              {errors.likes && touched.likes && (
+                <p className={style.error}>{errors.likes}</p>
+              )}
+            </div>
           </div>
 
-          <div className={style.inputContainer}>
-          <label htmlFor="likes" className={style.secondTitle}>Likes</label>
-            <input
-              type="number"
-              name="likes"
-              placeholder="Likes"
-              onChange={handleInput}
-              required="required"
-              onFocus={onFocus}
-              value={input.likes}
-              className={style.inputNumbers }
-            ></input>
-            {errors.likes && touched.likes && (
-              <p className={style.error}>{errors.likes}</p>
-            )}
-          </div>
-
 
           <div className={style.inputContainer}>
-          <label htmlFor="instructions" className={style.secondTitle}>Instructions</label>
+            <label htmlFor="instructions" className={style.secondTitle}>Instructions</label>
             <textarea
               type="text"
               name="instructions"
               placeholder="Instructions"
               onChange={handleInput}
               required="required"
-              onFocus={onFocus}
+              onBlur={onFocus}
               value={input.instructions}
               className={style.textareaStyle}
             ></textarea>
@@ -235,35 +244,37 @@ function Create() {
           </div>
         </div>
 
-        <div className={style.inputContainer}>
-          <label htmlFor="tiposSel" className={style.secondTitle}>Tipos</label>
-          <select
-            id="tiposSel"
-            name="tiposSel"
-            onChange={(e) => handleSelectTipo(e)}
-            className={style.select}
-            required
-            value={input.tipo}>
-            <option>Choose tipo</option>
-            {tipos.map((e) => (
-              <option value={e.id} key={e.id}>
-                {e.nombre}
-              </option>
+        <div  className={style.selectTipo}>
+          <div className={style.inputSelContainer}>
+            <label htmlFor="tiposSel" className={style.secondTitle}>Tipos</label>
+            <select
+              id="tiposSel"
+              name="tiposSel"
+              onChange={(e) => handleSelectTipo(e)}
+              className={style.select}
+              required
+              value={input.tipo}>
+              <option>Choose tipo</option>
+              {tipos.map((e) => (
+                <option value={e.id} key={e.id}>
+                  {e.nombre}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className={style.tempButtons}>
+            {input.tipo.map((t) => (
+              <div id={t} className={style.tipo}>
+                {getNamesTipo([t])}{' '}
+                <button
+                  type="button"
+                  className={style.tempButton}
+                  onClick={(e) => deleteTipo(e, t)}>
+                  X
+                </button>
+              </div>
             ))}
-          </select>
-        </div>
-        <div className={style.tempButtons}>
-          {input.tipo.map((t) => (
-            <p id={t} className={style.tipo}>
-              {getNamesTipo([t])}{' '}
-              <button
-                type="button"
-                className={style.tempButton}
-                onClick={(e) => deleteTipo(e, t)}>
-                X
-              </button>
-            </p>
-          ))}
+          </div>
         </div>
         <div className={style.containerButtton}>
           <button className={style.button} type="submit" name="grabar">

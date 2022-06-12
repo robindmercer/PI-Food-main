@@ -4,7 +4,8 @@
   margin: 0;
   color: #14213D;
   padding: 5px;
-  background-color: #fca311;
+  background-color: #11e4fc;
+  border: 3px solid blue;
   border-radius: 5px;
   width: fit-content;
   padding-right: 70px;
@@ -25,13 +26,9 @@
 
 .dataContainer {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   flex-direction: column;
   align-items: stretch;
-}
-
-.breedContainer {
-  justify-content: center;
 }
 
 .tempContainer {
@@ -65,13 +62,14 @@
   color: blue;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: normal;
+  margin-left:10px;
 }
 
 .button {
   color: white;
-  background-color: #fca311;
+  background-color: #11e4fc;
   border-radius: 5px;
   border: none;
   font: inherit;
@@ -86,18 +84,12 @@
   position: relative;
 }
 
-.breedContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 10px;
-}
 
 .temperament {
   display: inline-block;
   margin: 5px;
   color: #14213D;
-  background-color: #fca311;
+  background-color: #11e4fc;
   border-radius: 5px;
   width: fit-content;
   padding: 7px;
@@ -108,8 +100,8 @@
   align-items: center;
   margin-left: 10px;
   border-radius: 5px;
-  background-color: #fca311;
-  color: white;
+  /* background-color: #11e4fc; */
+  /* color: white; */
   font-size: 20px;
   font-family: inherit;
 }
@@ -125,7 +117,7 @@
 }
 
 .arrow:hover {
-  color: #fca311;
+  color: #11e4fc;
   transition: all 0.5s;
   cursor: pointer;
 }

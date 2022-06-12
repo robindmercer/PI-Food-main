@@ -9,6 +9,18 @@
     display       : inline-table;
 }
 
+
+.inputNumberContainer {
+    display        : flex;
+    margin         : 10px;
+    justify-content: space-around;
+}
+
+.tipo {
+    color : blue;
+    margin: 5px;
+}
+
 .formDetail {
     margin: 10px;
 }
@@ -20,8 +32,22 @@
     flex-direction : column;
     justify-content: center;
     flex           : 0 1 180px;
-    /* align-items : center;  */
     text-align     : left;
+}
+
+.selectTipo {
+    color          : #3219f2;
+    flex-direction : column;
+    justify-content: center;
+    flex           : 0 1 180px;
+    text-align     : left;
+    border         : 1px solid lightblue;
+    margin         : 10px;
+}
+
+.inputSelContainer {
+    margin    : 10px;
+    text-align: -webkit-center;
 }
 
 .selectTempContainer {
@@ -35,20 +61,31 @@
 }
 
 .button {
-    color           : white;
-    background-color: #FCA311;
-    border-radius   : 5px;
-    border          : none;
-    font            : inherit;
-    font-weight     : bold;
+    outline: none;
+    display: block;
+    margin : 28px auto 0;
+
+    color           : rgb(255, 255, 255);
+    font-size       : 16px;
+    line-height     : 12px;
     padding         : 10px;
-    outline         : none;
-    display         : block;
-    margin          : 28px auto 0;
+    margin          : 5px;
+    border-radius   : 10px;
+    font-family     : Georgia, serif;
+    font-weight     : normal;
+    text-decoration : none;
+    font-style      : bold;
+    font-variant    : normal;
+    text-transform  : none;
+    background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, rgb(35, 136, 203) 50%, rgb(20, 78, 117) 100%);
+    box-shadow      : rgba(0, 0, 0, 0.81) 9px 9px 17px 0px;
+    border          : 2px solid rgb(28, 110, 164);
+    /* display      : inline-block;     */
 }
 
 .containerButtton {
-    display: flex;
+    display        : flex;
+    justify-content: center;
 }
 
 .secondTitle {
@@ -145,7 +182,7 @@
 
 .textareaStyle {
     margin-top        : 7px;
-    margin-bottom     : 12px;    
+    margin-bottom     : 12px;
     background-color  : #44baf036;
     width             : 550px;
     height            : 80px;
@@ -170,20 +207,18 @@
 }
 
 .tempButton {
-    margin          : 4px 0;
-    border-radius   : px;
+    margin          : 4px 2px;
     background-color: transparent;
-    color           : #FCA311;
-    border          : none;
+    color           : red;
     font-size       : 15px;
-    line-height     : 0%;
     font-family     : inherit;
     cursor          : pointer;
 }
 
 .tempButton:hover {
-    color     : gray;
-    transition: all .2s;
+    color           : white;
+    background-color: red;
+    transition      : all .2s;
 }
 
 
@@ -212,7 +247,7 @@
 .tempButtons {
     align-content: center;
     /* width     : 180px; */
-    display      : center;
+    display      : flex;
     justify-self : center;
     margin-left  : 30px;
     margin-top   : 10px;

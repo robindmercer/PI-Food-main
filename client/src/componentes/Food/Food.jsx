@@ -2,15 +2,10 @@ import React from 'react'
 import style from './food.module.css'
 import { Link } from 'react-router-dom'
 
-//! Simple Card Component to show Breeds on Home Page
+//  
 function Card({ id, title, image, diets }) {
-  //console.log('diets: ', diets);
-  // if (diets) {
-  //   capitalizeWords(diets)
-  // }
   
   function capitalizeWords(arr) {
-    console.log('capitalizeWords: ', capitalizeWords);
       return arr.map(element => {
         return element.charAt(0).toUpperCase() + element.substring(1).toLowerCase();
       });

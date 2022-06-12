@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     summary: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(3000),
       allowNull: false,
     },
     likes: {
@@ -27,10 +27,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     instructions: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(3000),
     },
-    image:{
-    type: DataTypes.STRING,
+    image: {
+      type: DataTypes.STRING,
     }
   },
     { timestamps: false }

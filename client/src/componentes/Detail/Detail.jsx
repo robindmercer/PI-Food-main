@@ -1,33 +1,34 @@
 import React, { useEffect } from 'react'
 import style from './detail.module.css'
 import { Link } from 'react-router-dom'
-import { getFood,resetFood } from '../../actions'
+import { getFood, resetFood } from '../../actions'
 import { useDispatch, useSelector } from 'react-redux'
 //import parse from "html-react-parser";
 
 export default function Food(id) {
   const food = useSelector(state => state.foodDetail)
-  const dispatch = useDispatch()
 
+  const dispatch = useDispatch()
+  console.log('food: ', food);
   useEffect(() => {
     dispatch(getFood(id.id))
-    return(
+    return (
       dispatch(resetFood())
-    ) 
+    )
     // eslint-disable-next-line
   }, [])
 
 
-// Convierte HTML
-function createMarkup(xtext) {
-  return { __html: xtext}
-}
+  // Convierte HTML
+  function createMarkup(xtext) {
+    return { __html: xtext }
+  }
 
-function capitalizeWords(arr) {
+  function capitalizeWords(arr) {
     return arr.map(element => {
       return element.charAt(0).toUpperCase() + element.substring(1).toLowerCase();
     });
-}
+  }
 
   return (
     <div className={style.mainContainer}>
@@ -43,34 +44,31 @@ function capitalizeWords(arr) {
                 <p className={style.instructions} dangerouslySetInnerHTML={createMarkup(food.summary)} />
               </div>
             </div>
-            <div className={style.instructions}>
-             <h3>Instructions</h3>
-             <p dangerouslySetInnerHTML={createMarkup(food.instructions)} />
-            </div>
+            {food.instructions ? (
+              <div className={style.instructions}>
+                <h3>Instructions</h3>
+                <p dangerouslySetInnerHTML={createMarkup(food.instructions)} />
+              </div>
+            ) : null}
             <div className={style.dataContainer}>
-              <p className={style.info}>Health Score: {food.healthScore}</p>
+              <label className={style.info}><b>Health Score: </b>{food.healthScore}</label>
+              {food.aggregateLikes ? (
+                <label className={style.info}><b>Likes: </b>{food.aggregateLikes}</label>
+              ) :
+                <label className={style.info}><b>Likes: </b>{food.likes}</label>
+              }
               {food.diets ? (
-                <p className={style.info}>Diets: {capitalizeWords(food.diets).join(', ')}</p>
+                <label className={style.info}><b>Diets: </b>{capitalizeWords(food.diets).join(', ')}</label>
               ) : null}
               {food.dishTypes ? (
-                <p className={style.info}>Dish Types: {capitalizeWords(food.dishTypes).join(', ')}</p>
+                <label className={style.info}><b>Dish Types: </b>{capitalizeWords(food.dishTypes).join(', ')}</label>
               ) : null}
               {food.tipos ? (
                 <div className={style.info}>
-                  <div className={style.tempButtons}>
+                  <div className={style.tempButtons}><b>Dish Types: </b> 
                     {food.tipos &&
                       food.tipos.map((t) => {
-                        return <p className={style.temperament}>{t.nombre}</p>
-                      })}
-                  </div>
-                </div>
-              ) : null}
-              {food.platos ? (
-                <div className={style.info}>
-                  <div className={style.tempButtons}>
-                    {food.platos &&
-                      food.platos.map((t) => {
-                        return <p className={style.temperament}>{t.nombre}</p>
+                        return <label className={style.temperament}>{t.nombre}</label>
                       })}
                   </div>
                 </div>

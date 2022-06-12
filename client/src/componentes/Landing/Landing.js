@@ -10,11 +10,9 @@ function LandingPage() {
       <div className={style.landing}>
         <div className={style.msgContainer}>
           <p className={style.title}>FOOD Application</p>
-          <div>
-            <button className={style.button} onClick={() => history.push('/home')}>
-              Enter
-            </button>
-          </div>
+          <button className={style.button} onClick={() => history.push('/home')}>
+            Enter
+          </button>
         </div>
       </div>
     </>

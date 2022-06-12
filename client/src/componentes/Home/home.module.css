@@ -18,8 +18,7 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  align-items: center;
-  
+  align-items: center;  
   height: 100vh;
   background-size: cover;
   background-position: center;
@@ -36,13 +35,21 @@
 }
 
 .button {
-  color: white;
-  background-color: #fca311;
-  border-radius: 5px;
-  border: none;
-  font: inherit;
-  padding: 15px;
-  outline: none;
+  color: rgb(255, 255, 255); 
+  font-size: 16px; 
+  line-height: 12px; 
+  padding: 10px; 
+  margin:5px;
+  border-radius: 10px; 
+  font-family: Georgia, serif; 
+  font-weight: normal; 
+  text-decoration: none; 
+  font-style: normal; 
+  font-variant: normal; 
+  text-transform: none; 
+  background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, rgb(35, 136, 203) 50%, rgb(20, 78, 117) 100%); 
+  box-shadow: rgba(0, 0, 0, 0.81) 9px 9px 17px 0px; border: 2px solid rgb(28, 110, 164); 
+  display: inline-block;
 }
 
 .button:hover {
@@ -52,7 +59,7 @@
 
 .notFoundMsg {
   font-size: 30px;
-  color: #fca311;
+  color: #1144fc;
   margin-top: 20px;
   margin-bottom: 50px;
   display: flex;
@@ -60,35 +67,47 @@
   justify-content: center;
 }
 
-.container i {
+/* .container i {
   font-size: 80px;
   color: #0b223a;
   margin-bottom: 30px;
-}
+} */
 
-.paginateContainer {
+/* .paginateContainer {
   display: flex;
   justify-content: center;
   flex-direction: row;
-}
+} */
 
 
 .buttonpage {
-  border: 3px solid #14213d;
-  color: #14213d;
-  background-color: #fca211;
-  border-radius: 5px;
-  width: 150px;
-  height: 40px;
-  margin: 5px;
-  font-size: 20px;
-  font-weight: 600;
+  color: rgb(255, 255, 255); 
+  font-size: 28px; 
+  line-height: 30px; 
+  padding: 10px; 
+  margin:5px;
+  border-radius: 10px; 
+  font-family: Georgia, serif; 
+  font-weight: normal; 
+  text-decoration: none; 
+  font-style: normal; 
+  font-variant: normal; 
+  text-transform: none; 
+  background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, rgb(35, 136, 203) 50%, rgb(20, 78, 117) 100%); 
+  box-shadow: rgba(0, 0, 0, 0.81) 9px 9px 17px 0px; border: 2px solid rgb(28, 110, 164); 
+  display: inline-block;
 }
 
 .buttonpage:hover {
-  border: 3px solid #fca211;
-  color: #14213d;
-  background-color: #fca211;
+  background: #1C6EA4; 
+}
+
+.buttonpage:active {
+  background: #144E75; 
+}
+
+.noneDisplay{
+  display: none;
 }
 
 

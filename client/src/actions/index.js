@@ -62,7 +62,7 @@ export function filter(payload) {
     }
 }
 
-//! Sort Action
+// Sort Action
 export function sortFoods(order) {
     return {
         type: order,

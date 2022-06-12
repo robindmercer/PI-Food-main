@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './searchbar.module.css'
 
-    //! SearchBar input and Clear button
+// SearchBar input and Clear button
 function SearchBar({ input, setInput }) {
   return (
     <div>

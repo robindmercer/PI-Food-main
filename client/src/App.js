@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Landing from './componentes/Landing/Landing'
+import Landing from './componentes/Landing/Landing2'
 import Home from './componentes/Home/Home'
 import { Nav } from './componentes/Nav/Nav'
 import CreateFood from './componentes/CreateFood/CreateFood'

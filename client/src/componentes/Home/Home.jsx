@@ -10,17 +10,18 @@ export default function Home({ input, setInput }) {
     const filteredFoods = useSelector((state) => state.filteredFoods)
     const foods = useSelector((state) => state.allFoods)
     const loading = useSelector((state) => state.loading)
-
+    
     useEffect(() => {
         dispatch(setLoading())
         dispatch(getFoods());
         // eslint-disable-next-line 
     }, [])
-
+    
     const [pageNumber, setPageNumber] = useState(0)
     const [foodsPerPage] = useState(9)  // cantidad de recetas a mostrar   
     const pagesVisited = pageNumber * foodsPerPage
-
+    var showPie = true
+    
     function displayFoods(array) {
         if (array.message) {
             return (
@@ -34,26 +35,33 @@ export default function Home({ input, setInput }) {
                 </div>
             )
         }
-
+        
         let foodsToDisplay = array?.filter((b) => b.title.toLowerCase().includes(input.toLowerCase()))
-            .slice(pagesVisited, pagesVisited + foodsPerPage)
-
+        .slice(pagesVisited, pagesVisited + foodsPerPage)
+//console.log('foodsToDisplay.length: ', foodsToDisplay.length);
+        if (!foodsToDisplay.length) {
+             showPie = false
+//console.log('showPie: ', showPie);
+        }
         return foodsToDisplay.length ? (
             foodsToDisplay.map((food) => {
+                // console.log('foods: ', food);
+                // console.log('foods d: ', food.diets);
+                // console.log('foods t: ', food.tipos);
                 return <Card
                     id={food.id}
                     title={food.title}
                     image={food.image}
                     diets={food.diets}
                     key={food.id} />
-            })
-        ) : (
+                })
+                ) : (
             <div className={style.notFoundMsg}>
                 <p className={style.notFoundMsg}>No Recipes Found</p>
                 <button
                     className={style.button}
                     onClick={() => (window.location.href = '/home')}>
-                    Home
+                    Back Home
                 </button>
             </div>
         )
@@ -66,15 +74,14 @@ export default function Home({ input, setInput }) {
             <div>
                 <div className={style.container}>
                     {loading ? (
-                        <p className={style.blink_1}>Wait</p>
+                        <p className={style.blink_1}>Please Wait...</p>
                     ) : filteredFoods.length > 0 ? (
                         displayFoods(filteredFoods)
                     ) : (
                         displayFoods(foods)
                     )}
                 </div>
-                {/*  Pie de pagina                                 */}
-                <div className={style.paginateContainer}>
+                <div className={showPie ? style.paginateContainer : style.noneDisplay}>
                     {pageNumber === 0 ? null : (
                         <button
                             onClick={() => {

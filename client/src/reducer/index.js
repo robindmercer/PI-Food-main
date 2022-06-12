@@ -13,10 +13,8 @@ const initialState = {
   showFilter: false,
 }
 
-//! Reducer to get foods ordered by alphabet
+// Reducer to get foods ordered by alphabet
 const rootReducer = (state = initialState, action) => {
- // console.log('action: ', action);
-  
 
   if (action.type === GET_FOODS) {
     return {
@@ -30,7 +28,7 @@ const rootReducer = (state = initialState, action) => {
     }
   }
 
-  //! Reducer to set loading state
+  // Reducer to set loading state
   if (action.type === SET_LOADING) {
     return {
       ...state,
@@ -38,7 +36,7 @@ const rootReducer = (state = initialState, action) => {
     }
   }
 
-  //! Reducer to get food details from DB
+  // Reducer to get food details 
   if (action.type === GET_FOOD_DETAIL) {
     return {
       ...state,
@@ -49,7 +47,7 @@ const rootReducer = (state = initialState, action) => {
     }
   }
 
-  //! Reducer to get foods ordered by alphabet
+  // Reducer to get foods ordered by alphabet
   if (action.type === GET_FOOD) {
     return {
       ...state,
@@ -62,7 +60,7 @@ const rootReducer = (state = initialState, action) => {
     }
   }
 
-  //! Reducer to get tipo de dietas
+  // Reducer to get tipo de dietas
   if (action.type === GET_TIPOS) {
     return {
       ...state,
@@ -73,7 +71,7 @@ const rootReducer = (state = initialState, action) => {
     }
   }
 
-  //! Reducer to get tipo de Platos
+  // Reducer to get tipo de Platos
   if (action.type === GET_PLATOS) {
     return {
       ...state,
@@ -84,7 +82,7 @@ const rootReducer = (state = initialState, action) => {
     }
   }
 
-  //! Reducer to get filtered foods
+  // Reducer to get filtered foods
   if (action.type === FILTER) {
     return {
       ...state,
@@ -102,7 +100,7 @@ const rootReducer = (state = initialState, action) => {
     }
   }
 
-  //! Reducer to get foods ordered by alphabet from A-Z
+  // Reducer to get foods ordered by alphabet from A-Z
   if (action.type === ORDER_AZ) {
     return {
       ...state,
@@ -121,7 +119,7 @@ const rootReducer = (state = initialState, action) => {
     }
   }
 
-  //! Reducer to get foods ordered by alphabet from Z-A
+  // Reducer to get foods ordered by alphabet from Z-A
   if (action.type === ORDER_ZA) {
     return {
       ...state,

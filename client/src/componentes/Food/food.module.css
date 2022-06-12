@@ -22,7 +22,8 @@
 }
 
 .card:hover{
-  border: 4px solid #fca211;
+  border: 4px solid #11e4fc;
+  margin-bottom: 20px;
   transition: all .5s;
 }
 
@@ -80,4 +81,14 @@
   object-fit: cover;
   object-position: top center;
   border-radius: 5px;
+}
+
+
+.cardImg:hover {
+  transition: all .4s ease;
+  transform:scale(1.1) ; /*cuando nos posicionamos sobre la imagen con esta propiedad aumentamos su escala y ademas la giramos*/
+}
+.card:hover .imgContainer{
+  transition: all .4s ease;
+  height: 400px;
 }

@@ -11,65 +11,55 @@ function FilterSort() {
     // eslint-disable-next-line
   }, [])
   
-  //! Importing tipos and all foods to handle filtering
+  // Importing Tipos/Foodsb   
   const tipos = useSelector((state) => state.tipo)
   const foods = useSelector((state) => state.allFoods)
   
-  console.log('state.allFoods: ', foods);
-  console.log('state.tipos: ',  tipos);
 
   
   let [selectedTemp, setSelectedTemp] = useState('')
   let [tempToFilterBy, setTempToFilterBy] = useState([])
-
-  //! Setting what to do onClick
+  
+  // Setting Click
   function handleClick() {
     let filtered = []
     console.log('selectedTemp: ', selectedTemp);
+    console.log('tempToFilterBy: ', tempToFilterBy);
     foods.forEach((b) => {
       for (var i = 0; i < b.diets.length; i++) {
         var element = b.diets[i];
         if (element === selectedTemp ){
             filtered.push(b) 
         }
-        console.log('element: ', element);
+//        console.log('element: ', element); traigo todos las dietas
       }   
-        // b.diets.map((t) =>
-        //   t.nombre === selectedTemp ? filtered.push(b) : null,
-        //   )
     })
-    //console.log('filtered: ', filtered);
     dispatch(filter(filtered))
   }
 
-  //! Resetting Tipos sets the filter to empty
+  // Resetting filter to empty
   function resetTemps(e) {
     dispatch(filter([]))
   }
 
-  //! Setting what to do in case of tipo selection change
+  // Setting what to do in case of tipo selection change
   function handleChangeTemp(e) {
     setSelectedTemp(e.target.value)
   }
 
-  //! Setting what to do on Submit
+  // Setting what to do on Submit
   function handleSubmit(e) {
     e.preventDefault()
     setTempToFilterBy([...tempToFilterBy, selectedTemp])
   }
 
-  //! Setting what to do if ordering is selected
+  // Setting what to do if ordering is selected
   function handleOrder(e) {
     dispatch(sortFoods(e.target.value))
   }
 
-  //! Setting what to do if ordering is selected by weight
-  // function handleOrderByWeight(e) {
-  //   dispatch(orderByWeight(e.target.value))
-  // }
-
   return (
-    //! Form to select Tipo al filter by it
+    // Form to select Tipo & Filter
     <div className={style.mainContainer}>
       <form className={style.formContainer} onSubmit={handleSubmit}>
         <select
@@ -105,7 +95,7 @@ function FilterSort() {
       </form>
       <button
         className={style.button}
-        onClick={() => (window.location.href = '/home')}>Clear</button>
+        onClick={() => (window.location.href = '/home')}>Clear All</button>
     </div>
   )
 }
