@@ -108,7 +108,7 @@ router.get('/detail/:id', async (req, res, next) => {
             url = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${APPY_KEY}`
             response = await axios.get(url);
             recipe = response.data
-            res.status(200).res.send(recipe);
+            res.status(200).send(recipe);
         }
     } catch (error) {
         next(error)

@@ -7,7 +7,6 @@ const initialState = {
   searchedFood: [],
   foodDetail: {},
   tipo: [],
-  plato:[],
   filteredFoods: [],
   loading: false,
   showFilter: false,
