@@ -9,9 +9,9 @@ function SearchBar({ input, setInput }) {
         onSubmit={(e) => e.preventDefault()}
         className={style.formContainer}
       >
-        <div className={style.search}>
+        {/* <div className={style.search}>
           <i className="fas fa-paw"></i>
-        </div>
+        </div> */}
         <div className={style.searchBarContainer}>
           <input
             type="text"

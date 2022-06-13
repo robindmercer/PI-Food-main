@@ -38,16 +38,11 @@ export default function Home({ input, setInput }) {
         
         let foodsToDisplay = array?.filter((b) => b.title.toLowerCase().includes(input.toLowerCase()))
         .slice(pagesVisited, pagesVisited + foodsPerPage)
-//console.log('foodsToDisplay.length: ', foodsToDisplay.length);
         if (!foodsToDisplay.length) {
              showPie = false
-//console.log('showPie: ', showPie);
         }
         return foodsToDisplay.length ? (
             foodsToDisplay.map((food) => {
-                // console.log('foods: ', food);
-                // console.log('foods d: ', food.diets);
-                // console.log('foods t: ', food.tipos);
                 return <Card
                     id={food.id}
                     title={food.title}

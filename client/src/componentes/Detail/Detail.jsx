@@ -3,6 +3,7 @@ import style from './detail.module.css'
 import { Link } from 'react-router-dom'
 import { getFood, resetFood } from '../../actions'
 import { useDispatch, useSelector } from 'react-redux'
+import imagen from "../../image/arrow.png"
 //import parse from "html-react-parser";
 
 export default function Food(id) {
@@ -70,7 +71,9 @@ export default function Food(id) {
                     food.tipos.map((t) => {
                       newArray.push(t.nombre)
                       // return <label className={style.info}>{t.nombre}</label>
-                    })}
+                      return 'ok'
+                    }
+                    )}
                   <label className={style.info}><b>Dish Types:&nbsp; </b>{capitalizeWords(newArray).join(', ')}</label>
                 </div>
               ) : null}
@@ -83,7 +86,8 @@ export default function Food(id) {
         )}
       </div>
       <Link to="/home" className={style.arrow}>
-        <span className="fas fa-caret-square-right"></span>
+        {/* <span className="fas fa-caret-square-right"></span> */}
+       <spam> <img className={style.arrowImg} src={imagen} alt="" /></spam>
       </Link>
     </div>
   )

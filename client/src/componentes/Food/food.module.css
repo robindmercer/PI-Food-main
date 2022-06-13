@@ -88,7 +88,7 @@
   transition: all .4s ease;
   transform:scale(1.1) ; /*cuando nos posicionamos sobre la imagen con esta propiedad aumentamos su escala y ademas la giramos*/
 }
-.card:hover .imgContainer{
+.cardImg:hover .imgContainer{
   transition: all .4s ease;
   height: 400px;
 }

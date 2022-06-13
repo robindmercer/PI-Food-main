@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_FOODS, GET_FOOD_DETAIL, GET_TIPOS, FILTER,RESET_FOOD, GET_PLATOS,SET_LOADING } from './constants'
+import { GET_FOODS, GET_FOOD_DETAIL, GET_TIPOS, FILTER,RESET_FOOD, SET_LOADING } from './constants'
 
 // comunico con el Back 
 // Busco recetas
@@ -34,17 +34,6 @@ export function getTipos() {
     }
   }
 
-// Tipo de Platos Action (trae todos)
-export function getPlatos() {
-    console.log('Action ->getPlatos');
-    return async function (dispatch) {
-      const platos = await axios.get(`/platos`);
-      return dispatch({
-          type: GET_PLATOS, 
-          payload: platos.data 
-        });
-    }
-  }
 
 // Loading advise
 export function setLoading() {

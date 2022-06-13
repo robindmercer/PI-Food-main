@@ -1,4 +1,4 @@
-.cardsContainer {
+/* .cardsContainer {
   display: inline-table;
   justify-content: space-around;
   max-width: 1000px;
@@ -7,12 +7,12 @@
   justify-content: space-around;
   align-items: center;
   margin: auto;
-}
+} */
 
-.actions {
+/* .actions {
   display: flex;
   align-items: center;
-}
+} */
 
 .mainContainer {
   display: flex;

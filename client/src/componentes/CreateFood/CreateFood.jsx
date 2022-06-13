@@ -55,7 +55,7 @@ function Create() {
 
   const dispatch = useDispatch()
 
-  // Get Tipos / Platos 
+  // Get Tipos 
   useEffect(() => {
     dispatch(getTipos())
     // eslint-disable-next-line

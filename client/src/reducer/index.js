@@ -1,4 +1,4 @@
-import { GET_FOODS, GET_FOOD_DETAIL, GET_TIPOS,GET_PLATOS } from '../actions/constants' 
+import { GET_FOODS, GET_FOOD_DETAIL, GET_TIPOS } from '../actions/constants' 
 import { FILTER, SET_LOADING, GET_FOOD, ORDER_AZ, ORDER_ZA,RESET_FOOD
  } from '../actions/constants'
 
@@ -66,17 +66,6 @@ const rootReducer = (state = initialState, action) => {
       ...state,
       loading: true,
       tipo: action.payload,
-       // eslint-disable-next-line     
-      loading: false,
-    }
-  }
-
-  // Reducer to get tipo de Platos
-  if (action.type === GET_PLATOS) {
-    return {
-      ...state,
-      loading: true,
-      plato: action.payload,
        // eslint-disable-next-line     
       loading: false,
     }

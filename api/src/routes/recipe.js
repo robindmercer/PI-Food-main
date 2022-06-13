@@ -33,7 +33,7 @@ router.get('/', function (req, res, next) {
             next(error)
         }
     } else {
-        url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APPY_KEY}&number=5&addRecipeInformation=true`
+        url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APPY_KEY}&number=100&addRecipeInformation=true`
         recipeApi = axios.get(url);
         recipeDb = Recipe.findAll({
             include: Tipo
