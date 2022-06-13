@@ -35,7 +35,7 @@ export default function Home({ input, setInput }) {
                 </div>
             )
         }
-        
+// hago el paginado         
         let foodsToDisplay = array?.filter((b) => b.title.toLowerCase().includes(input.toLowerCase()))
         .slice(pagesVisited, pagesVisited + foodsPerPage)
         if (!foodsToDisplay.length) {
@@ -82,23 +82,20 @@ export default function Home({ input, setInput }) {
                             onClick={() => {
                                 setPageNumber(pageNumber - 1)
                             }}
-                            className={style.buttonpage}
-                        >
+                            className={style.buttonpage}>
                             Previous
                         </button>
                     )}
                     {pageNumber === 0 ? null : (
                         <button
                             onClick={() => setPageNumber(0)}
-                            className={style.buttonpage}
-                        >
+                            className={style.buttonpage}>
                             Home
                         </button>
                     )}
                     <button
                         onClick={() => setPageNumber(pageNumber + 1)}
-                        className={style.buttonpage}
-                    >
+                        className={style.buttonpage}>
                         Next
                     </button>
                 </div>

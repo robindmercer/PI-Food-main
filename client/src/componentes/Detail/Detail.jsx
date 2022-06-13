@@ -81,13 +81,13 @@ export default function Food(id) {
           </div>
         ) : (
           <div>
-            <p className={style.blink_1}>Wait</p>
+            <p className={style.blink_1}>Please Wait...</p>
           </div>
         )}
       </div>
       <Link to="/home" className={style.arrow}>
         {/* <span className="fas fa-caret-square-right"></span> */}
-       <spam> <img className={style.arrowImg} src={imagen} alt="" /></spam>
+       <p> <img className={style.arrowImg} src={imagen} alt="" /></p>
       </Link>
     </div>
   )

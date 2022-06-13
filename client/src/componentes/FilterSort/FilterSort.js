@@ -23,15 +23,12 @@ function FilterSort() {
   // Setting Click
   function handleClick() {
     let filtered = []
-    console.log('selectedTemp: ', selectedTemp);
-    console.log('tempToFilterBy: ', tempToFilterBy);
     foods.forEach((b) => {
       for (var i = 0; i < b.diets.length; i++) {
         var element = b.diets[i];
         if (element === selectedTemp ){
             filtered.push(b) 
         }
-//        console.log('element: ', element); traigo todos las dietas
       }   
     })
     dispatch(filter(filtered))

@@ -15,7 +15,6 @@ router.get('/', function (req, res, next) {
     if (name) {
         try {
             url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APPY_KEY}&titleMatch=${name}&addRecipeInformation=true`
-            console.log('url: ', url);
             recipeApi = axios.get(url,
                 recipeDb = Recipe.findAll({
                     //include: Tipos,
@@ -59,7 +58,6 @@ router.get('/', function (req, res, next) {
                     let getDiets = recipe.tipos.map((data)=>{
                         newDiets.push(data.nombre)
                     })
-                    console.log('newDiets: ', newDiets);
                     return {
                         id: recipe.id,
                         title: recipe.title,
@@ -69,8 +67,7 @@ router.get('/', function (req, res, next) {
                 })
             }
             let allRecipes = [...filterRecipeApi, ...filterRecipeDb]
-
-            res.send(allRecipes);
+            res.status(200).send(allRecipes);
         })
         .catch(error => {
             console.log('error: ', error);
@@ -93,7 +90,7 @@ router.post('/', async function (req, res, next) {
             image: "https://www.freeiconspng.com/uploads/no-image-icon-4.png"
         })
         const newTipo = await newRecipe.setTipos(tipo)
-        res.send("Receta Creada");
+        res.status(200).res.send("Receta Creada");
     } catch (error) {
         console.log('Error', req.body)
         next(error)
@@ -101,7 +98,6 @@ router.post('/', async function (req, res, next) {
 })
 
 router.get('/detail/:id', async (req, res, next) => {
-    //console.log('detail: ');
     try {
         const id = req.params.id
         let recipe
@@ -110,11 +106,9 @@ router.get('/detail/:id', async (req, res, next) => {
             res.send(recipe);
         } else {
             url = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${APPY_KEY}`
-            //console.log('url: ', url);
             response = await axios.get(url);
             recipe = response.data
-            console.log('recipe: ', recipe);
-            res.send(recipe);
+            res.status(200).res.send(recipe);
         }
     } catch (error) {
         next(error)
