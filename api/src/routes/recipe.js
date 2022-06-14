@@ -90,7 +90,7 @@ router.post('/', async function (req, res, next) {
             image: "https://www.freeiconspng.com/uploads/no-image-icon-4.png"
         })
         const newTipo = await newRecipe.setTipos(tipo)
-        res.status(200).res.send("Receta Creada");
+        res.status(200).send("Receta Creada");
     } catch (error) {
         console.log('Error', req.body)
         next(error)
