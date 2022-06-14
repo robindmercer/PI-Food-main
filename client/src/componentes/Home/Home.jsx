@@ -10,7 +10,7 @@ export default function Home({ input, setInput }) {
     const filteredFoods = useSelector((state) => state.filteredFoods)
     const foods = useSelector((state) => state.allFoods)
     const loading = useSelector((state) => state.loading)
-    
+
     useEffect(() => {
         dispatch(setLoading())
         dispatch(getFoods());
@@ -23,7 +23,8 @@ export default function Home({ input, setInput }) {
     var showPie = true
     
     function displayFoods(array) {
-        if (array.message) {
+        console.log('array: ', array);
+        if (!array) {
             return (
                 <div className={style.notFoundMsg}>
                     <p className={style.notFoundMsg}>Recipe not found</p>
@@ -47,6 +48,7 @@ export default function Home({ input, setInput }) {
                     id={food.id}
                     title={food.title}
                     image={food.image}
+                    healthScore={food.healthScore}
                     diets={food.diets}
                     key={food.id} />
                 })

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_FOODS, GET_FOOD_DETAIL, GET_TIPOS, FILTER,RESET_FOOD, SET_LOADING } from './constants'
+import { GET_FOODS, GET_FOOD_DETAIL, GET_TIPOS, FILTER,RESET_FOOD, SET_LOADING,SET_SEARCH } from './constants'
 
 // comunico con el Back 
 // Busco recetas
@@ -41,6 +41,13 @@ export function setLoading() {
       type: SET_LOADING,
     }
   }
+
+// Turn Off search bar 
+export function setOffSearch() {
+    return {
+      type: SET_SEARCH,
+    }
+}
 
 
 // Filter Action

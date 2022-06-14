@@ -136,8 +136,8 @@ El modelo de la base de datos deberá tener las siguientes entidades (Aquellas p
   - ID: *                       => `id`
   - Nombre *                    => `title`
   - Resumen del plato *         => `sumarry`
-  - Puntuación                  => `aggregateLikes` 
-  - Nivel de "comida saludable" => `healthScore`
+  - Puntuación                  => `healthScore` 
+  - Nivel de "comida saludable" => `aggregateLikes`
   - Paso a paso                 => `instructions`
 - [ ] Tipo de dieta con las siguientes propiedades:
   - ID

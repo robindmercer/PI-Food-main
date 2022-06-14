@@ -16,7 +16,6 @@ function FilterSort() {
   const foods = useSelector((state) => state.allFoods)
   
 
-  
   let [selectedTemp, setSelectedTemp] = useState('')
   let [tempToFilterBy, setTempToFilterBy] = useState([])
   
@@ -83,11 +82,17 @@ function FilterSort() {
       </form>
 
       <form className={style.formContainer}>
-        {/* <p className={style.text}>Order By Letter</p> */}
         <select onChange={handleOrder} className={style.select}>
           <option value="">Order by Recipe</option>
           <option value="AZ">Ascending</option>
           <option value="ZA">Descending</option>
+        </select>
+      </form>
+      <form className={style.formContainer}>
+        <select onChange={handleOrder} className={style.select}>
+          <option value="">Order by Punctuation</option>
+          <option value="AP">Ascending</option>
+          <option value="DP">Descending</option>
         </select>
       </form>
       <button

@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getTipos } from '../../actions/index'
+import { getTipos,setOffSearch } from '../../actions/index'
 import axios from 'axios'
 import style from './create.module.css'
 
@@ -57,6 +57,7 @@ function Create() {
 
   // Get Tipos 
   useEffect(() => {
+    dispatch(setOffSearch())
     dispatch(getTipos())
     // eslint-disable-next-line
   }, [])

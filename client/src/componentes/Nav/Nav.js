@@ -2,9 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import style from './nav.module.css'
 import SearchBar from '../SearchBar/SearchBar'
-
+import { useSelector } from 'react-redux'
 // Nav Bar & SearchBar 
 export function Nav({ setInput, input }) {
+  const showShearch = useSelector((state) => state.showShearch)
   return (
     <div className={style.mainContainer}>
       <nav className={style.navContainer}>
@@ -16,7 +17,9 @@ export function Nav({ setInput, input }) {
             Create Recipe
           </Link>
         </div>
-        <SearchBar setInput={setInput} input={input} />
+        {showShearch ? (
+          <SearchBar setInput={setInput} input={input} />
+        ) : null}
       </nav>
     </div>
   )

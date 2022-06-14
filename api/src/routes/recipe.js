@@ -49,6 +49,7 @@ router.get('/', function (req, res, next) {
                     id: recipe.id,
                     title: recipe.title,
                     image: recipe.image,
+                    healthScore:recipe.healthScore,
                     diets: recipe.diets
                 }
             })
@@ -62,6 +63,7 @@ router.get('/', function (req, res, next) {
                         id: recipe.id,
                         title: recipe.title,
                         image: recipe.image,
+                        healthScore:recipe.healthScore,
                         diets: newDiets
                     }
                 })

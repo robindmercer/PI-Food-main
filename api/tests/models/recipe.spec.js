@@ -11,7 +11,7 @@ describe('Recipe model', () => {
     describe('name', () => {
       it('should throw an error if name is null', (done) => {
         Recipe.create({})
-          .then(() => done(new Error('It requires a valid name')))
+          .then(() => done(new Error('Falta información para poder darte de alta la receta')))
           .catch(() => done());
       });
       it('should work when its a valid name', () => {

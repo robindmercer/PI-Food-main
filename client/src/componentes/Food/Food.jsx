@@ -3,7 +3,7 @@ import style from './food.module.css'
 import { Link } from 'react-router-dom'
 
 //  
-function Card({ id, title, image, diets }) {
+function Card({ id, title, image,healthScore, diets }) {
   
   function capitalizeWords(arr) {
       return arr.map(element => {

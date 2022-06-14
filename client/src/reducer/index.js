@@ -1,6 +1,6 @@
-import { GET_FOODS, GET_FOOD_DETAIL, GET_TIPOS } from '../actions/constants' 
-import { FILTER, SET_LOADING, GET_FOOD, ORDER_AZ, ORDER_ZA,RESET_FOOD
- } from '../actions/constants'
+import { GET_FOODS, GET_FOOD_DETAIL, GET_TIPOS, GET_FOOD,FILTER } from '../actions/constants' 
+import { SET_LOADING,ORDER_AZ, ORDER_ZA,RESET_FOOD,ORDER_AP,ORDER_DP,SET_SEARCH
+         } from '../actions/constants'
 
 const initialState = {
   allFoods: [],
@@ -9,7 +9,7 @@ const initialState = {
   tipo: [],
   filteredFoods: [],
   loading: false,
-  showFilter: false,
+  showShearch: true,
 }
 
 // Reducer to get foods ordered by alphabet
@@ -19,10 +19,11 @@ const rootReducer = (state = initialState, action) => {
     return {
       ...state,
       loading: true,
+      showShearch: true,
       allFoods: action.payload.sort((a, b) =>
         a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1,
       ),
-          // eslint-disable-next-line
+      // eslint-disable-next-line
       loading: false,
     }
   }
@@ -35,11 +36,20 @@ const rootReducer = (state = initialState, action) => {
     }
   }
 
+  // Turn Off Search Bar
+  if (action.type === SET_SEARCH) {
+    return {
+      ...state,
+      showShearch: false,
+    }
+  }
+
   // Reducer to get food details 
   if (action.type === GET_FOOD_DETAIL) {
     return {
       ...state,
       loading: true,
+      showShearch: false,    
       foodDetail: action.payload,
       // eslint-disable-next-line
       loading: false,
@@ -84,11 +94,12 @@ const rootReducer = (state = initialState, action) => {
 ) {
     return {
       ...state,
+      showShearch: true,
       foodDetail: null
     }
   }
 
-  // Reducer to get foods ordered by alphabet from A-Z
+  // Foods ordered by alphabet from A-Z
   if (action.type === ORDER_AZ) {
     return {
       ...state,
@@ -107,7 +118,7 @@ const rootReducer = (state = initialState, action) => {
     }
   }
 
-  // Reducer to get foods ordered by alphabet from Z-A
+  // Foods ordered by alphabet from Z-A  
   if (action.type === ORDER_ZA) {
     return {
       ...state,
@@ -121,6 +132,45 @@ const rootReducer = (state = initialState, action) => {
       filteredFoods: state.filteredFoods
         .filter((b) => b.title !== null)
         .sort((a, b) => (a.title.toLowerCase() < b.title.toLowerCase() ? 1 : -1)),
+        // eslint-disable-next-line    
+      loading: false,
+    }
+  }
+
+
+  // Foods ordered by healthScore
+  if (action.type === ORDER_AP) {
+    return {
+      ...state,
+      loading: true,
+      allFoods: state.allFoods
+        .filter((b) => b.healthScore !== null)
+        .sort((a, b) => (a.healthScore > b.healthScore ? 1 : -1)),
+      searchedFood: state.searchedFood
+        .filter((b) => b.healthScore !== null)
+        .sort((a, b) => (a.healthScore > b.healthScore ? 1 : -1)),
+      filteredFoods: state.filteredFoods
+        .filter((b) => b.healthScore !== null)
+        .sort((a, b) => (a.healthScore > b.healthScore ? 1 : -1)),
+       // eslint-disable-next-line     
+      loading: false,
+    }
+  }
+
+  // Foods ordered by healthScore
+  if (action.type === ORDER_DP) {
+    return {
+      ...state,
+      loading: true,
+      allFoods: state.allFoods
+        .filter((b) => b.healthScore !== null)
+        .sort((a, b) => (a.healthScore < b.healthScore ? 1 : -1)),
+      searchedFood: state.searchedFood
+        .filter((b) => b.healthScore !== null)
+        .sort((a, b) => (a.healthScore < b.healthScore ? 1 : -1)),
+      filteredFoods: state.filteredFoods
+        .filter((b) => b.healthScore !== null)
+        .sort((a, b) => (a.healthScore < b.healthScore ? 1 : -1)),
         // eslint-disable-next-line    
       loading: false,
     }

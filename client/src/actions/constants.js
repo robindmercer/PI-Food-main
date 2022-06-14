@@ -1,10 +1,15 @@
-export const GET_FOODS = 'GET_FOODS'
 export const GET_FOOD = 'GET_FOOD'
+export const GET_FOODS = 'GET_FOODS'
 export const GET_FOOD_DETAIL = 'GET_FOOD_DETAIL'
 export const GET_TIPOS = 'GET_TIPOS'
 export const FILTER = 'FILTER'
 export const SET_LOADING = 'SET_LOADING'
 export const SHOW = 'SHOW'
-export const ORDER_AZ = 'AZ'
-export const ORDER_ZA = 'ZA'
+export const SET_SEARCH = 'SET_SEARCH'
 export const RESET_FOOD='RESET_FOOD'
+// Alfabeticamente
+export const ORDER_AZ = 'AZ' 
+export const ORDER_ZA = 'ZA'
+// Por Puntuacion 
+export const ORDER_AP = 'AP' 
+export const ORDER_DP = 'DP'
