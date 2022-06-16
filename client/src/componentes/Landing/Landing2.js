@@ -23,7 +23,7 @@ function LandingPage() {
           </div>
         </div>
         <div className="msgContainer">
-          <h2>FOOD Application</h2>
+          <h2 className='text-pop-up-top'>FOOD Application</h2>
           <div>
             <button className="button" onClick={() => history.push('/home')}>
               Enter
