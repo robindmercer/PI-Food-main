@@ -13,3 +13,5 @@ export const ORDER_ZA = 'ZA'
 // Por Puntuacion 
 export const ORDER_AP = 'AP' 
 export const ORDER_DP = 'DP'
+export const GET_LANG = 'GET_LANG'
+export const SET_LANG = 'SET_LANG'

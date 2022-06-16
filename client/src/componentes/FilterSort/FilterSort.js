@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { sortFoods, getTipos,filter } from '../../actions/index'
+import { sortFoods, getTipos,filter, filterLang } from '../../actions/index'
 import { useSelector, useDispatch } from 'react-redux'
 import style from './filtersort.module.css'
 
@@ -18,6 +18,12 @@ function FilterSort() {
 
   let [selectedTemp, setSelectedTemp] = useState('')
   let [tempToFilterBy, setTempToFilterBy] = useState([])
+  
+  const idioma = useSelector((state) => state.idioma)
+  const lang = useSelector((state) => state.lang)
+
+  let idiomas = []
+  idiomas = filterLang(idioma, 'FIL', lang)
   
   // Setting Click
   function handleClick() {
@@ -64,7 +70,7 @@ function FilterSort() {
           value={selectedTemp}
           className={style.select}
         >
-          <option>Filter Diets</option>
+          <option>{idiomas[0]}</option>
           {tipos.map((e) => (
             <option value={e.nombre} key={e.id}>
               {e.nombre}
@@ -73,31 +79,31 @@ function FilterSort() {
         </select>
         <div className={style.btnContainer}>
           <button onClick={() => handleClick()} className={style.button}>
-            Filter
+          {idiomas[5]}
           </button>
           <button onClick={resetTemps} className={style.button}>
-            Clear
+          {idiomas[6]}
           </button>
         </div>
       </form>
 
       <form className={style.formContainer}>
         <select onChange={handleOrder} className={style.select}>
-          <option value="">Order by Recipe</option>
-          <option value="AZ">Ascending</option>
-          <option value="ZA">Descending</option>
+          <option value="">{idiomas[1]}</option>
+          <option value="AZ">{idiomas[3]}</option>
+          <option value="ZA">{idiomas[4]}</option>
         </select>
       </form>
       <form className={style.formContainer}>
         <select onChange={handleOrder} className={style.select}>
-          <option value="">Order by Punctuation</option>
-          <option value="AP">Ascending</option>
-          <option value="DP">Descending</option>
+          <option value="">{idiomas[2]}</option>
+          <option value="AP">{idiomas[3]}</option>
+          <option value="DP">{idiomas[4]}</option>
         </select>
       </form>
       <button
         className={style.button}
-        onClick={() => (window.location.href = '/home')}>Clear All</button>
+        onClick={() => (window.location.href = '/home')}>{idiomas[7]}</button>
     </div>
   )
 }

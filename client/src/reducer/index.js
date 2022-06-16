@@ -1,5 +1,5 @@
 import { GET_FOODS, GET_FOOD_DETAIL, GET_TIPOS, GET_FOOD,FILTER } from '../actions/constants' 
-import { SET_LOADING,ORDER_AZ, ORDER_ZA,RESET_FOOD,ORDER_AP,ORDER_DP,SET_SEARCH
+import { SET_LOADING,ORDER_AZ, ORDER_ZA,RESET_FOOD,ORDER_AP,ORDER_DP,SET_SEARCH,GET_LANG, SET_LANG
          } from '../actions/constants'
 
 const initialState = {
@@ -10,6 +10,8 @@ const initialState = {
   filteredFoods: [],
   loading: false,
   showShearch: true,
+  idioma:[],
+  lang:'ENG',
 }
 
 // Reducer to get foods ordered by alphabet
@@ -43,7 +45,6 @@ const rootReducer = (state = initialState, action) => {
       showShearch: false,
     }
   }
-
   // Reducer to get food details 
   if (action.type === GET_FOOD_DETAIL) {
     return {
@@ -77,6 +78,21 @@ const rootReducer = (state = initialState, action) => {
       tipo: action.payload,
        // eslint-disable-next-line     
       loading: false,
+    }
+  }
+
+  // Get Idioma
+  if (action.type === GET_LANG) {
+    return {
+      ...state,
+      idioma: action.payload,
+    }
+  }
+  // Set Idioma
+  if (action.type === SET_LANG) {
+    return {
+      ...state,
+      lang: action.payload,
     }
   }
 

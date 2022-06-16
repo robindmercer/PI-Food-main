@@ -1,8 +1,18 @@
 import React from 'react'
 import style from './searchbar.module.css'
+import { useSelector } from 'react-redux'
+import { filterLang } from '../../actions'
 
 // SearchBar input and Clear button
 function SearchBar({ input, setInput }) {
+
+  const idioma = useSelector((state) => state.idioma)
+  const lang = useSelector((state) => state.lang)
+
+  let idiomas = []
+  idiomas = filterLang(idioma, 'SRC', lang)
+
+
   return (
     <div>
       <form
@@ -16,7 +26,7 @@ function SearchBar({ input, setInput }) {
           <input
             type="text"
             value={input}
-            placeholder="Search For a Recipe"
+            placeholder={idiomas[0]}
             onChange={(e) => setInput(e.target.value)}
             className={style.input}
           ></input>
@@ -24,7 +34,7 @@ function SearchBar({ input, setInput }) {
             className={style.button}
             onClick={() => (window.location.href = '/home')}
           >
-            Clear
+            {idiomas[1]}
           </button>
         </div>
       </form>

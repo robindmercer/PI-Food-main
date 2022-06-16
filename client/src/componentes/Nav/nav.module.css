@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 95%;
   padding: 8px;
   border-bottom: 2px solid #1e8003;
   margin-bottom: 30px;
@@ -58,5 +58,12 @@
     transform: translateZ(5px);
   }
 
-
-  
+.idiomas{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 187px;
+}
+.idiomas label{
+  color:blue; 
+}

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getFoods, setLoading } from './../../actions/index'
+import { getFoods, setLoading, filterLang } from './../../actions/index'
 import Card from '../Food/Food'
 import FilterSort from '../FilterSort/FilterSort'
 import style from './home.module.css'
-
 export default function Home({ input, setInput }) {
+
     const dispatch = useDispatch();
     const filteredFoods = useSelector((state) => state.filteredFoods)
     const foods = useSelector((state) => state.allFoods)
@@ -16,14 +16,19 @@ export default function Home({ input, setInput }) {
         dispatch(getFoods());
         // eslint-disable-next-line 
     }, [])
-    
+
     const [pageNumber, setPageNumber] = useState(0)
     const [foodsPerPage] = useState(9)  // cantidad de recetas a mostrar   
     const pagesVisited = pageNumber * foodsPerPage
     var showPie = true
-    
+
+    const idioma = useSelector((state) => state.idioma)
+    const lang = useSelector((state) => state.lang)
+
+    let idiomas = []
+    idiomas = filterLang(idioma, 'HOME', lang)
+
     function displayFoods(array) {
-        console.log('array: ', array);
         if (!array) {
             return (
                 <div className={style.notFoundMsg}>
@@ -36,11 +41,11 @@ export default function Home({ input, setInput }) {
                 </div>
             )
         }
-// hago el paginado         
+        // hago el paginado         
         let foodsToDisplay = array?.filter((b) => b.title.toLowerCase().includes(input.toLowerCase()))
-        .slice(pagesVisited, pagesVisited + foodsPerPage)
+            .slice(pagesVisited, pagesVisited + foodsPerPage)
         if (!foodsToDisplay.length) {
-             showPie = false
+            showPie = false
         }
         return foodsToDisplay.length ? (
             foodsToDisplay.map((food) => {
@@ -51,8 +56,8 @@ export default function Home({ input, setInput }) {
                     healthScore={food.healthScore}
                     diets={food.diets}
                     key={food.id} />
-                })
-                ) : (
+            })
+        ) : (
             <div className={style.notFoundMsg}>
                 <p className={style.notFoundMsg}>No Recipes Found</p>
                 <button
@@ -85,20 +90,20 @@ export default function Home({ input, setInput }) {
                                 setPageNumber(pageNumber - 1)
                             }}
                             className={style.buttonpage}>
-                            Previous
+                            {idiomas[2]}
                         </button>
                     )}
                     {pageNumber === 0 ? null : (
                         <button
                             onClick={() => setPageNumber(0)}
                             className={style.buttonpage}>
-                            Home
+                            {idiomas[3]}
                         </button>
                     )}
                     <button
                         onClick={() => setPageNumber(pageNumber + 1)}
                         className={style.buttonpage}>
-                        Next
+                        {idiomas[4]}
                     </button>
                 </div>
             </div>

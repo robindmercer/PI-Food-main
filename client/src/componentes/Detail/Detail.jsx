@@ -1,18 +1,21 @@
 import React, { useEffect } from 'react'
 import style from './detail.module.css'
 import { Link } from 'react-router-dom'
-import { getFood, resetFood } from '../../actions'
+import { getFood, filterLang, resetFood } from '../../actions'
 import { useDispatch, useSelector } from 'react-redux'
 import imagen from "../../image/arrow.png"
+
 //import parse from "html-react-parser";
 
 export default function Food(id) {
+
   const food = useSelector(state => state.foodDetail)
+  const idioma = useSelector((state) => state.idioma)
+  const lang = useSelector((state) => state.lang)
 
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getFood(id.id))
-
     return (
       dispatch(resetFood())
     )
@@ -31,7 +34,7 @@ export default function Food(id) {
   }
 
   let newArray = []
-  
+  let idiomas = filterLang(idioma, 'DETAIL', lang)
   return (
     <div className={style.mainContainer}>
       <div className={style.secondContainer}>
@@ -48,22 +51,22 @@ export default function Food(id) {
             </div>
             {food.instructions ? (
               <div className={style.instructions}>
-                <h3>Instructions</h3>
+                <h3>{idiomas[0]}</h3>
                 <p dangerouslySetInnerHTML={createMarkup(food.instructions)} />
               </div>
             ) : null}
             <div className={style.dataContainer}>
-              <label className={style.info}><b>Health Score: </b>{food.healthScore}</label>
+              <label className={style.info}><b>{idiomas[1]}: </b>{food.healthScore}</label>
               {food.aggregateLikes ? (
-                <label className={style.info}><b>Likes:&nbsp;</b>{food.aggregateLikes}</label>
+                <label className={style.info}><b>{idiomas[2]}:&nbsp;</b>{food.aggregateLikes}</label>
               ) :
-                <label className={style.info}><b>Likes:&nbsp;</b>{food.likes}</label>
+                <label className={style.info}><b>{idiomas[2]}:&nbsp;</b>{food.likes}</label>
               }
               {food.diets ? (
-                <label className={style.info}><b>Diets:&nbsp;</b>{capitalizeWords(food.diets).join(', ')}</label>
+                <label className={style.info}><b>{idiomas[3]}:&nbsp;</b>{capitalizeWords(food.diets).join(', ')}</label>
               ) : null}
               {food.dishTypes ? (
-                <label className={style.info}><b>Dish Types:&nbsp; </b>{capitalizeWords(food.dishTypes).join(', ')}</label>
+                <label className={style.info}><b>{idiomas[4]}:&nbsp; </b>{capitalizeWords(food.dishTypes).join(', ')}</label>
               ) : null}
               {food.tipos ? (
                 <div className={style.dataContainer}>
@@ -87,7 +90,7 @@ export default function Food(id) {
       </div>
       <Link to="/home" className={style.arrow}>
         {/* <span className="fas fa-caret-square-right"></span> */}
-       <p> <img className={style.arrowImg} src={imagen} alt="" /></p>
+        <p> <img className={style.arrowImg} src={imagen} alt="" /></p>
       </Link>
     </div>
   )

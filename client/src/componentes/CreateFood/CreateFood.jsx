@@ -1,39 +1,39 @@
 import { React, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getTipos,setOffSearch } from '../../actions/index'
+import { getTipos,setOffSearch,filterLang } from '../../actions/index'
 import axios from 'axios'
 import style from './create.module.css'
 
 //  - With Form and Validators
-function validateForm(input) {
+function validateForm(input) {  
   let errors = {}
   if (!input.title) {
-    errors.title = 'Title is required'
+    errors.title = '14'
   } else {
     errors.title = ''
   }
   if (!input.summary) {
-    errors.summary = 'Description is required'
+    errors.summary = '15'
   } else {
     errors.summary = ''
   }
 
   if (!input.healthScore) {
-    errors.healthScore = 'Food Health is required'
+    errors.healthScore = '16'
   } else {
     if (input.healthScore > 999) {
-      errors.healthScore = 'Sorry Helth Score is from 0 to 999'
+      errors.healthScore = '17'
     } else {
       errors.healthScore = ''
     }
   }
   if (!input.likes) {
-    errors.likes = 'Puntuacion is required'
+    errors.likes = '18'
   } else {
     errors.likes = ''
   }
   if (!input.instructions) {
-    errors.instructions = 'Instructions is required'
+    errors.instructions = '19'
   } else {
     errors.instructions = ''
   }
@@ -52,17 +52,19 @@ function Create() {
     instructions: '',
     tipo: [],
   })
-
+  
   const dispatch = useDispatch()
-
+  const idioma = useSelector((state) => state.idioma)
+  const lang = useSelector((state) => state.lang)
   // Get Tipos 
   useEffect(() => {
     dispatch(setOffSearch())
     dispatch(getTipos())
     // eslint-disable-next-line
   }, [])
-
+  
   const tipos = useSelector((state) => state.tipo)
+  let idiomas = filterLang(idioma, 'CREATE', lang)
 
   // Handle Inputs
   function handleInput(e) {
@@ -153,12 +155,12 @@ function Create() {
       <form onSubmit={handleSubmit} className={style.formDetail}>
         <div className={style.inputsContainer}>
           <div className={style.inputContainer}>
-            <label htmlFor="title" className={style.secondTitle}>Title</label>
+            <label htmlFor="title" className={style.secondTitle}>{idiomas[0]}</label>
             <input
               type="text"
               id="title"
               name="title"
-              placeholder="Youre recipe title"
+              placeholder={idiomas[9]}
               onChange={handleInput}
               required="required"
               onBlur={onFocus}
@@ -166,16 +168,16 @@ function Create() {
               className={style.input}
             ></input>
             {errors.title && touched.title && (
-              <p className={style.error}>{errors.title}</p>
+              <p className={style.error}>{idiomas[errors.title]}</p>
             )}
           </div>
 
           <div className={style.inputContainer}>
-            <label htmlFor="summary" className={style.secondTitle}>Summary</label>
+            <label htmlFor="summary" className={style.secondTitle}>{idiomas[1]}</label>
             <textarea
               type="text"
               name="summary"
-              placeholder="Give me a little Summary"
+              placeholder={idiomas[10]}
               onChange={handleInput}
               required="required"
               onBlur={onFocus}
@@ -183,16 +185,16 @@ function Create() {
               className={style.textareaStyle}
             ></textarea>
             {errors.summary && touched.summary && (
-              <p className={style.error}>{errors.summary}</p>
+              <p className={style.error}>{idiomas[errors.summary]}</p>
             )}
           </div>
           <div className={style.inputNumberContainer}>
             <div className={style.inputContainer}>
-              <label htmlFor="healthScore" className={style.secondTitle}>Food Health Level</label>
+              <label htmlFor="healthScore" className={style.secondTitle}>{idiomas[2]}</label>
               <input
                 type="number"
                 name="healthScore"
-                placeholder="Health Level"
+                placeholder={idiomas[2]}
                 onChange={handleInput}
                 required="required"
                 min="0"
@@ -202,16 +204,16 @@ function Create() {
                 className={style.inputNumbers}
               ></input>
               {errors.healthScore && touched.healthScore && (
-                <p className={style.error}>{errors.healthScore}</p>
+                <p className={style.error}>{idiomas[errors.healthScore]}</p>
               )}
             </div>
 
             <div className={style.inputContainer}>
-              <label htmlFor="likes" className={style.secondTitle}>Likes</label>
+              <label htmlFor="likes" className={style.secondTitle}>{idiomas[3]}</label>
               <input
                 type="number"
                 name="likes"
-                placeholder="Likes"
+                placeholder={idiomas[3]}
                 min="0"
                 max="999"
                 onChange={handleInput}
@@ -221,18 +223,18 @@ function Create() {
                 className={style.inputNumbers}
               ></input>
               {errors.likes && touched.likes && (
-                <p className={style.error}>{errors.likes}</p>
+                <p className={style.error}>{idiomas[errors.likes]}</p>
               )}
             </div>
           </div>
 
 
           <div className={style.inputContainer}>
-            <label htmlFor="instructions" className={style.secondTitle}>Instructions</label>
+            <label htmlFor="instructions" className={style.secondTitle}>{idiomas[4]}</label>
             <textarea
               type="text"
               name="instructions"
-              placeholder="Instructions"
+              placeholder={idiomas[4]}
               onChange={handleInput}
               required="required"
               onBlur={onFocus}
@@ -240,14 +242,14 @@ function Create() {
               className={style.textareaStyle}
             ></textarea>
             {errors.instructions && touched.instructions && (
-              <p className={style.error}>{errors.instructions}</p>
+              <p className={style.error}>{idiomas[errors.instructions]}</p>
             )}
           </div>
         </div>
 
         <div  className={style.selectTipo}>
           <div className={style.inputSelContainer}>
-            <label htmlFor="tiposSel" className={style.secondTitle}>Tipos</label>
+            <label htmlFor="tiposSel" className={style.secondTitle}>{idiomas[11]}</label>
             <select
               id="tiposSel"
               name="tiposSel"
@@ -255,7 +257,7 @@ function Create() {
               className={style.select}
               required
               value={input.tipo}>
-              <option>Choose tipo</option>
+              <option>{idiomas[13]}</option>
               {tipos.map((e) => (
                 <option value={e.id} key={e.id}>
                   {e.nombre}
@@ -279,7 +281,7 @@ function Create() {
         </div>
         <div className={style.containerButtton}>
           <button className={style.button} type="submit" name="grabar">
-            Create Recipe
+            {idiomas[12]}
           </button>
         </div>
       </form>
