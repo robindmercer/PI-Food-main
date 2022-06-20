@@ -27,3 +27,16 @@ describe('Recipe routes', () => {
     );
   });
 });
+
+describe('Recipe Routes Get', function () {
+  describe('/recipe/detail/:id', function () {
+    it('GET /recipe/detail/:id should return detail', function () {
+      agent.get('/recipe/detail/632244')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .expect(function (res) {
+          expect(res.body.Title).to.be.equal('Alouette Chicken Paprika');
+        })
+    })
+  })
+})
