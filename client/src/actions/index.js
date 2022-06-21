@@ -33,7 +33,7 @@ export function getTipos() {
         });
     }
   }
-// Tipo de Dieta Action (trae todos)
+// Idiomas (trae todos)
 export function getLang() {
     return async function (dispatch) {
       const idioma = await axios.get(`/idiomas`);
@@ -43,7 +43,7 @@ export function getLang() {
         });
     }
   }
-
+// Setea idioma a mostrar
 export function setLang(lang){
     return {
         type: SET_LANG,
@@ -89,15 +89,11 @@ export function resetFood() {
 }
 
 export function filterLang(array, page, lang){
-     //console.log('filterLang array: ', array);
-     //console.log('filterLang lang: ', lang);
-     //console.log('filterLang page: ', page);
     let idioma = []
     if (array.length > 0) {
       for (let i = 0; i < array.length; i++) {
         if (array[i].lang === lang && array[i].page === page ) idioma.push(array[i].texto);
       }
-      //console.log('filterLang idioma: ', idioma);
     }
     return idioma;
 }

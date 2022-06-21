@@ -80,7 +80,7 @@ function Create() {
     )
   }
 
-  // Function to handle click on the input
+  // Handle click on the input
   function onFocus(ev) {
     setTouched({
       ...touched,
@@ -90,10 +90,9 @@ function Create() {
 
 
 
-  //  - Function to handle the submit
+  // Handle submit
   function handleSubmit(e) {
     e.preventDefault()
-    //console.log('e: ', input);
     if (!errors.title && !errors.summary && !errors.healthScore && !errors.instructions && !errors.likes) {
       axios
         .post('/recipes', input)

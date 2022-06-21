@@ -17,10 +17,3 @@ module.exports = (sequelize) => {
         { timestamps: false }
     );
 };
-
-
-// insert into idiomas values 
-// (1,'Home','ENG','No Recipes Found'),
-// (2,'Home','SPA','Receta inexistente'),
-// (3,'Home','ENG','No Recipes Found'),
-// (4,'Home','SPA','Receta inexistente');

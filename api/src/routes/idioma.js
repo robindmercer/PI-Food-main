@@ -1,3 +1,6 @@
+//****************/
+// Idiomas
+//****************/
 const { Router } = require('express');
 const { Idioma } = require('../db')
 const router = Router();

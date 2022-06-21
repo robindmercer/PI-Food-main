@@ -26,7 +26,7 @@ export default function Food(id) {
   function createMarkup(xtext) {
     return { __html: xtext }
   }
-
+// Primer Digito a Mayusculas
   function capitalizeWords(arr) {
     return arr.map(element => {
       return element.charAt(0).toUpperCase() + element.substring(1).toLowerCase();

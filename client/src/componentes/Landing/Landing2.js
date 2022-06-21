@@ -2,7 +2,7 @@ import React from 'react'
 import './landing.module2.css'
 import { useHistory } from 'react-router'
 
-// Landing Page - includes button to go to HOME
+// Landing Page 2nd Version - includes button to go to HOME
 function LandingPage() {
   const history = useHistory()
   return (

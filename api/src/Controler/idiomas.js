@@ -7,8 +7,8 @@ async function idiomaLoad(){
     Idioma.bulkCreate([
         { id:1, page : 'HOME', lang: 'ENG', texto:'No Recipes Found'},
         { id:2, page : 'HOME', lang: 'SPA', texto:'Receta inexistente'},
-        { id:3, page : 'HOME', lang: 'ENG', texto:'No Recipes Found'},
-        { id:4, page : 'HOME', lang: 'SPA', texto:'Receta inexistente'},
+        { id:3, page : 'HOME', lang: 'ENG', texto:'Please Wait...'},
+        { id:4, page : 'HOME', lang: 'SPA', texto:'Por favor espere...'},
         { id:5, page : 'DETAIL', lang: 'ENG', texto:'Instructions'},
         { id:6, page : 'DETAIL', lang: 'SPA', texto:'Instrucciones'},
         { id:7, page : 'DETAIL', lang: 'ENG', texto:'Healh Score'},
@@ -95,6 +95,8 @@ async function idiomaLoad(){
         { id:89, page : 'CREATE',lang: 'SPA', texto:'Me gusta es requerida'},
         { id:90, page : 'CREATE',lang: 'ENG', texto:'Instructions is required'},
         { id:91, page : 'CREATE',lang: 'SPA', texto:'Instrucciones es requerida'},
+        { id:92, page : 'HOME', lang: 'ENG', texto:'Back Home'},
+        { id:93, page : 'HOME', lang: 'SPA', texto:'Pagina Principal'},
         ]).then(() => console.log("Idiomas ha sido grabado"));
        
     return "ok";

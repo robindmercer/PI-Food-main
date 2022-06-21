@@ -34,7 +34,7 @@ export default function Home({ input, setInput }) {
         if (!array) {
             return (
                 <div className={style.notFoundMsg}>
-                    <p className={style.notFoundMsg}>Recipe not found</p>
+                    <p className={style.notFoundMsg}>{idiomas[0]}</p>
                     <button
                         className={style.button}
                         onClick={() => (window.location.href = '/home')}>
@@ -59,13 +59,15 @@ export default function Home({ input, setInput }) {
                     diets={food.diets}
                     key={food.id} />
             })
-        ) : (
+        ) : input === "" ? (
+            <p className={style.blink_1}>{idiomas[1]}</p>
+        ) :(
             <div className={style.notFoundMsg}>
-                <p className={style.notFoundMsg}>No Recipes Found</p>
+                <p className={style.notFoundMsg}>{idiomas[0]}</p>
                 <button
                     className={style.button}
                     onClick={() => (window.location.href = '/home')}>
-                    Back Home
+                    {idiomas[5]}
                 </button>
             </div>
         )
@@ -78,7 +80,7 @@ export default function Home({ input, setInput }) {
             <div>
                 <div className={style.container}>
                     {loading ? (
-                        <p className={style.blink_1}>Please Wait...</p>
+                        <p className={style.blink_1}>{idiomas[1]}</p>
                     ) : filteredFoods.length > 0 ? (
                         displayFoods(filteredFoods)
                     ) : (

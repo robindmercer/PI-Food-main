@@ -11,7 +11,7 @@ function FilterSort() {
     // eslint-disable-next-line
   }, [])
   
-  // Importing Tipos/Foodsb   
+  // Importing Tipos / Foods   
   const tipos = useSelector((state) => state.tipo)
   const foods = useSelector((state) => state.allFoods)
   
@@ -39,23 +39,23 @@ function FilterSort() {
     dispatch(filter(filtered))
   }
 
-  // Resetting filter to empty
+  // Resetting filter
   function resetTemps(e) {
     dispatch(filter([]))
   }
 
-  // Setting what to do in case of tipo selection change
+  // Selection change
   function handleChangeTemp(e) {
     setSelectedTemp(e.target.value)
   }
 
-  // Setting what to do on Submit
+  // Submit
   function handleSubmit(e) {
     e.preventDefault()
     setTempToFilterBy([...tempToFilterBy, selectedTemp])
   }
 
-  // Setting what to do if ordering is selected
+  // Ordering is selected
   function handleOrder(e) {
     dispatch(sortFoods(e.target.value))
   }

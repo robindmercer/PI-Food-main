@@ -6,7 +6,6 @@ const { APPY_KEY } = process.env;
 
 async function databaseLoad() {
     let tempdiets = ["vegetarian"]
-    // let tempdishTypes = []    
     url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APPY_KEY}&number=5&addRecipeInformation=true`
     recipeApi = axios.get(url);
     Promise.all([recipeApi])
