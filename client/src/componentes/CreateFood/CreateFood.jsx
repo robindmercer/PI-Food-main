@@ -162,7 +162,6 @@ function Create() {
               name="title"
               placeholder={idiomas[9]}
               onChange={handleInput}
-              required="required"
               onBlur={onFocus}
               value={input.title}
               className={style.input}
@@ -179,7 +178,6 @@ function Create() {
               name="summary"
               placeholder={idiomas[10]}
               onChange={handleInput}
-              required="required"
               onBlur={onFocus}
               value={input.summary}
               className={style.textareaStyle}
@@ -196,9 +194,8 @@ function Create() {
                 name="healthScore"
                 placeholder={idiomas[2]}
                 onChange={handleInput}
-                required="required"
-                min="0"
-                max="999"
+                min="1"
+                max="10"
                 onBlur={onFocus}
                 value={input.healthScore}
                 className={style.inputNumbers}
@@ -217,7 +214,6 @@ function Create() {
                 min="0"
                 max="999"
                 onChange={handleInput}
-                required="required"
                 onBlur={onFocus}
                 value={input.likes}
                 className={style.inputNumbers}
@@ -236,7 +232,6 @@ function Create() {
               name="instructions"
               placeholder={idiomas[4]}
               onChange={handleInput}
-              required="required"
               onBlur={onFocus}
               value={input.instructions}
               className={style.textareaStyle}
@@ -255,7 +250,6 @@ function Create() {
               name="tiposSel"
               onChange={(e) => handleSelectTipo(e)}
               className={style.select}
-              required
               value={input.tipo}>
               <option>{idiomas[13]}</option>
               {tipos.map((e) => (

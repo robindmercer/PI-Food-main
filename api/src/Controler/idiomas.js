@@ -4,8 +4,6 @@ const { Idioma }= require('../db')
 
 async function idiomaLoad(){
     
-    console.log('Idioma: ', Idioma);
-    
     Idioma.bulkCreate([
         { id:1, page : 'HOME', lang: 'ENG', texto:'No Recipes Found'},
         { id:2, page : 'HOME', lang: 'SPA', texto:'Receta inexistente'},

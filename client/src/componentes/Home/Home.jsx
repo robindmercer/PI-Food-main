@@ -4,7 +4,9 @@ import { getFoods, setLoading, filterLang } from './../../actions/index'
 import Card from '../Food/Food'
 import FilterSort from '../FilterSort/FilterSort'
 import style from './home.module.css'
+
 export default function Home({ input, setInput }) {
+    console.log('input: ', input);
 
     const dispatch = useDispatch();
     const filteredFoods = useSelector((state) => state.filteredFoods)
@@ -110,3 +112,4 @@ export default function Home({ input, setInput }) {
         </div>
     )
 }
+
