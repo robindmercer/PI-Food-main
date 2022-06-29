@@ -7,33 +7,40 @@ import style from './create.module.css'
 //  - With Form and Validators
 function validateForm(input) {  
   let errors = {}
-  if (!input.title) {
+  errors.ok='OK'
+  if (!input.title || input.title === '') {
     errors.title = '14'
+    errors.ok='NO'
   } else {
     errors.title = ''
   }
   if (!input.summary) {
     errors.summary = '15'
+    errors.ok='NO'
   } else {
     errors.summary = ''
   }
-
+  
   if (!input.healthScore) {
     errors.healthScore = '16'
+    errors.ok='NO'
   } else {
     if (input.healthScore > 999) {
       errors.healthScore = '17'
+      errors.ok='NO'
     } else {
       errors.healthScore = ''
     }
   }
   if (!input.likes) {
     errors.likes = '18'
+    errors.ok='NO'
   } else {
     errors.likes = ''
   }
   if (!input.instructions) {
     errors.instructions = '19'
+    errors.ok='NO'
   } else {
     errors.instructions = ''
   }
@@ -80,7 +87,7 @@ function Create() {
     )
   }
 
-  // Handle click on the input
+  // Handle Focus
   function onFocus(ev) {
     setTouched({
       ...touched,
@@ -93,7 +100,9 @@ function Create() {
   // Handle submit
   function handleSubmit(e) {
     e.preventDefault()
-    if (!errors.title && !errors.summary && !errors.healthScore && !errors.instructions && !errors.likes) {
+    validateForm(input)
+    console.log('handleSubmit errors.title: ', errors.title);
+    if (!errors.title && !errors.summary && !errors.healthScore && !errors.instructions && !errors.likes && errors.ok === 'OK') {
       axios
         .post('/recipes', input)
         .then((r) => {
@@ -101,9 +110,9 @@ function Create() {
           setInput({
             title: '',
             likes: '',
-            resumen: '',
-            nivel: '',
-            receta: '',
+            summary: '',
+            healthScore: '',
+            instructions: '',
             tipo: [],
           })
         })
@@ -112,7 +121,7 @@ function Create() {
           alert('Could not create Recipe')
         })
     } else {
-      alert('Ups... there was a problem')
+      alert('Sorry there was a problem no data.')
     }
   }
 

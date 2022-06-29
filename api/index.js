@@ -18,9 +18,9 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const databaseLoad = require('./src/Controler/databaseLoad.js');
+const databaseLoad = require('./src/Loader/databaseLoad.js');
 const { conn } = require('./src/db.js');
-const idiomaLoad= require('./src/Controler/idiomas.js');
+const idiomaLoad= require('./src/Loader/idiomas.js');
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   databaseLoad();
