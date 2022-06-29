@@ -50,7 +50,8 @@ router.get('/', function (req, res, next) {
                     title: recipe.title,
                     image: recipe.image,
                     healthScore:recipe.healthScore,
-                    diets: recipe.diets
+                    diets: recipe.diets,
+                    sourceName :recipe.sourceName
                 }
             })
             if (charDb){

@@ -35,6 +35,7 @@ export default function Food(id) {
 
   let newArray = []
   let idiomas = filterLang(idioma, 'DETAIL', lang)
+  console.log('food: ', food);
   return (
     <div className={style.mainContainer}>
       <div className={style.secondContainer}>
@@ -62,6 +63,9 @@ export default function Food(id) {
               ) :
                 <label className={style.info}><b>{idiomas[2]}:&nbsp;</b>{food.likes}</label>
               }
+              {food.sourceName ? (
+                <label className={style.info}><b>Source Name :</b>{food.sourceName} </label>
+              ): null}
               {food.diets ? (
                 <label className={style.info}><b>{idiomas[3]}:&nbsp;</b>{capitalizeWords(food.diets).join(', ')}</label>
               ) : null}
